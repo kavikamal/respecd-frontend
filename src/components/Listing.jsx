@@ -51,7 +51,9 @@ class Listing extends Component {
               </div>
               
             </div>
+
             </Segment>
+
             </React.Fragment>
            
         )

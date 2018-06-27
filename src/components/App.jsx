@@ -16,6 +16,7 @@ import {
 import { Switch, Route, Link } from "react-router-dom";
 import Glasses from "./Glasses.jsx";
 import SideNav from "./Sidebar.jsx";
+import Create  from "./createListing.jsx";
 
 class App extends Component {
   state = { activeItem: "home" };
@@ -32,7 +33,7 @@ class App extends Component {
             <Menu.Item as={Link} to={"/glasses"} onClick={this.handleItemClick}>
               Browse
             </Menu.Item>
-            <Menu.Item as={Link} to={"/"} onClick={this.handleItemClick}>
+            <Menu.Item as={Link} to={"/createListing"} onClick={this.handleItemClick}>
               Donate
             </Menu.Item>
             <Menu.Item as={Link} to={"/"} onClick={this.handleItemClick}>
@@ -43,6 +44,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses" component={Glasses} />
+          <Route path="/createListing" component={Create} />
         </Switch>
       </React.Fragment>
     );
