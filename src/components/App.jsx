@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../App.css';
-import { Button, Form, Divider, Container, Header, Sidebar } from 'semantic-ui-react';
+import { Button, Form, Divider, Container, Header } from 'semantic-ui-react';
 import { Switch, Route, Link } from 'react-router-dom';
 import Glasses from './Glasses.jsx';
+import SideNav from './Sidebar.jsx';
 
 class App extends Component {
   render() {
@@ -21,7 +22,7 @@ class App extends Component {
 
       <Switch>
 
-        <Route exact path='/glasses' component={Glasses}/>
+        <Route path='/glasses' component={Glasses}/>
         
       </Switch>
 
