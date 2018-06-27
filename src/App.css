@@ -2,9 +2,35 @@
   text-align: center;
 }
 
+.test {
+  /* height: 800px; */
+  /* border: 10x solid red; */
+  display: flex;
+}
+.title {
+  /* border: 1px solid green; */
+  width: 100%;
+}
+
+.quality {
+  /* border: 1px solid orange; */
+  display: flex;
+}
+
+.image {
+  border-radius: 3px;
+}
+
 #sideBar {
   height: 700px;
   width: 100%;
+}
+
+.prescription {
+  /* border: 1px solid orange; */
+  display: flex;
+  justify-content: flex-end;
+  
 }
 
 #bar {
@@ -15,14 +41,14 @@
   border-radius: 3px !important;
   background-color: lightgray;
   display: flex;
-  /* align-items: center; */
+  
 }
 
 #rightRX, #leftRX, #sizeItem, #location, #condition  {
   background: lightgray;
   width: 300px;
   height: 40px;
-  /* border: 1px solid green; */
+  
   display: flex;
   justify-content: left;
   color: lightslategrey;
@@ -34,7 +60,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
-  /* border: 1px solid red; */
+  
   width: 300px;
   height: 120px;
   top: 10px;
