@@ -10,18 +10,13 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-      <LoginRegister />
+      
       <div className="App">
           Hello This is the home page for re-spec'd  
       </div>
 
-      <div id="glassesButtons">
-        <Button size='large' color='green'>Donate Glasses</Button>
-        <Link to='/glasses'><Button size='large' color='blue'>Browse Glasses</Button></Link>
-      </div>
-
       <Switch>
-
+        <Route exact path="/" component={LoginRegister}/>
         <Route path='/glasses' component={Glasses}/>
         
       </Switch>

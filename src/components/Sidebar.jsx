@@ -1,13 +1,32 @@
 import React, { Component } from 'react';
-import { Button, Sidebar, Menu } from 'semantic-ui-react';
+import { Button, Sidebar, Menu, Dropdown, Segment } from 'semantic-ui-react';
 import '../App.css';
+import Listing from './Listing.jsx'
 
 export default class SideNav extends Component {
-    render(){
-        return(
-             <form id="sideBar">     
+  state = { visible: false }
 
-<Sidebar className="side" id="bar" as={Menu} animation='overlay' inverted vertical visible width='thin'>
+  render() {
+    const { visible } = this.state
+ 
+        return(
+          
+<div id="test">               
+
+<Sidebar.Pushable as={Segment}>
+            <Sidebar
+              as={Menu}
+              animation='overlay'
+              icon='labeled'
+              inverted
+              onHide={this.handleSidebarHide}
+              vertical
+              visible={visible}
+              width='thick'
+            >
+
+  <form id="sideBar">  
+
    <Menu.Item id="rightRX">RIGHT RX
    </Menu.Item>
 
@@ -227,10 +246,22 @@ export default class SideNav extends Component {
        <Button id="startOverBtn" size='large' color='gray'><div id="startOverLabel">Start Over</div></Button>
     
    </Menu.Item>
+   </form>
   
 </Sidebar>
 
-</form>
+<Sidebar.Pusher>
+<Segment basic>
+    <Listing />
+    <Listing />
+    <Listing />
+    <Listing />
+  </Segment>
+</Sidebar.Pusher>
+</Sidebar.Pushable>
+</div>
+
+
         )
     }
 }
