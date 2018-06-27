@@ -18,39 +18,25 @@ import Glasses from "./Glasses.jsx";
 import SideNav from "./Sidebar.jsx";
 
 class App extends Component {
+  state = { activeItem: "home" };
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   render() {
     return (
       <React.Fragment>
-        <Image src={banner} fluid/>
-        <Menu>
-          <Menu.Menu position="right">
-            <Menu.Item>
-              <Link to="/">
-                {/* <Button size="large" color="yellow"> */}
-                  Home
-                {/* </Button> */}
-              </Link>
+        <Image src={banner} fluid />
+        <Menu size="huge">
+          <Menu.Menu position="right" inverted widths={4}>
+            <Menu.Item as={Link} to={"/"} onClick={this.handleItemClick}>
+              Home
             </Menu.Item>
-            <Menu.Item>
-              <Link to="/glasses">
-                {/* <Button size="large" color="blue"> */}
-                  Browse
-                {/* </Button> */}
-              </Link>
+            <Menu.Item as={Link} to={"/glasses"} onClick={this.handleItemClick}>
+              Browse
             </Menu.Item>
-            <Menu.Item>
-            <Link to="/">
-              {/* <Button size="large" color="green"> */}
-                Donate
-              {/* </Button> */}
-            </Link>
+            <Menu.Item as={Link} to={"/"} onClick={this.handleItemClick}>
+              Donate
             </Menu.Item>
-            <Menu.Item onClick={this.handleItemClick}>
-            <Link to="/">
-            {/* <Button size="large" color="red"> */}
+            <Menu.Item as={Link} to={"/"} onClick={this.handleItemClick}>
               Logout
-            {/* </Button> */}
-            </Link>
             </Menu.Item>
           </Menu.Menu>
         </Menu>
