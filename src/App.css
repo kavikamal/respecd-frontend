@@ -2,10 +2,127 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#sideBar {
+  height: 700px;
+  width: 100%;
 }
+
+#bar {
+  width: 400px;
+  position: relative;
+  left: 50px;
+  border: 1px solid lightslategray;
+  border-radius: 3px !important;
+  background-color: lightgray;
+  display: flex;
+  /* align-items: center; */
+}
+
+#rightRX, #leftRX, #sizeItem, #location, #condition  {
+  background: lightgray;
+  width: 300px;
+  height: 40px;
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: left;
+  color: lightslategrey;
+  top: 25px;
+}
+
+#conditionItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  /* border: 1px solid red; */
+  width: 300px;
+  height: 120px;
+  top: 10px;
+}
+
+#rxSelect1, #rxSelect2, #size, #locationItem {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 300px;
+  height: 40px;
+  top: 10px;
+}
+
+#rxRight1, #rxRight2, #rxLeft1, #rxLeft2, #city, #state {
+  border: 1px solid darkgray;
+  width: 100px;
+  height: 25px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+#sizeInput {
+  border: 1px solid darkgray;
+  width: 100px;
+  height: 25px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+#radio1 {
+  /* border: 1px solid yellow; */
+  height: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+#star1 {
+  color: black;
+  font-size: 28px;
+  height: 18px;
+  /* border: 1px solid red; */
+  margin-left: 10px;
+  
+
+}
+
+#searchBtn, #startOverBtn {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  border: 1px solid darkgray;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#buttons {
+  height: 100px;
+  background: lightgray;
+  width: 400px;
+  height: 70px;
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: center;
+  color: black;
+  top: 100px;
+}
+
+#searchLabel {
+  color: white;
+}
+
+#startOverLabel {
+  color: black;
+}
+
+.listingComponent {
+  background-color: yellow;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  
+}
+
 
 .App-header {
   background-color: #222;
