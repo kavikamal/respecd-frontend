@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Header, Image, Button, Container } from 'semantic-ui-react';
+import { Header, Image, Button, Segment } from 'semantic-ui-react';
 import image1 from '../images/image1.jpg';
 import star from '../images/star.png';
 import starOff from '../images/star_off.png'
@@ -9,7 +9,7 @@ class Listing extends Component {
     render() {
         return(
             <React.Fragment>
-               
+            <Segment>
             <div class="test">
             <div class="image">
               <Image src={image1}/>
@@ -51,7 +51,9 @@ class Listing extends Component {
               </div>
               
             </div>
-   
+
+            </Segment>
+
             </React.Fragment>
            
         )
