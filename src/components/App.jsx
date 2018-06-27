@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../App.css';
-import { Button, Form, Divider, Container, Header } from 'semantic-ui-react';
+import LoginRegister from './LoginRegister';
+import { Button, Form, Divider, Container, Header, Sidebar } from 'semantic-ui-react';
 import { Switch, Route, Link } from 'react-router-dom';
 import Glasses from './Glasses.jsx';
 import SideNav from './Sidebar.jsx';
@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-
+      <LoginRegister />
       <div className="App">
           Hello This is the home page for re-spec'd  
       </div>
@@ -28,6 +28,7 @@ class App extends Component {
 
       </React.Fragment>
     )
+
   }
 }
 
