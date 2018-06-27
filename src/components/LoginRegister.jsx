@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Button, Form, Divider, Container, Header } from "semantic-ui-react";
+import { Button, Form, Divider, Container, Header, Segment } from "semantic-ui-react";
 
 export default class LoginRegister extends Component {
     constructor(props){
         super(props);
         this.state = {
-            username: ""
+            username: "",
+            password: "",
+
         }
     }
     handleChange = field => e => {
@@ -38,7 +40,9 @@ export default class LoginRegister extends Component {
     return (
       <React.Fragment>
         <Container text>
+        <Segment textAlign="center" padded="heavy" inverted color="teal">
           <Header as="h1">Welcome to Re-Spec'd!</Header>
+        </Segment>
           <Container text>
             <Header as="h2">New to Re-Spec'd? Register here!</Header>
             <Form onSubmit={this.handleRegisterSubmit}>
@@ -54,25 +58,25 @@ export default class LoginRegister extends Component {
               </Form.Field>
               <Form.Field>
                 <Form.Input
-                //   onChange={this.handleChange}
+                  onChange={this.handleChange("password")}
                   fluid
                   label="Password"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   required
                 />
               </Form.Field>
               <Form.Field>
                 <Form.Input
-                //   onChange={""}
+                // onChange={""}
                   fluid
                   label="Confirm Password"
-                  type="text"
+                  type="password"
                   placeholder="Confirm Password"
                   required
                 />
               </Form.Field>
-              <Button inverted color="teal" type="submit">
+              <Button  color="teal" type="submit">
                 Submit
               </Button>
             </Form>
@@ -96,12 +100,12 @@ export default class LoginRegister extends Component {
                   onChange={""}
                   fluid
                   label="Password"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   required
                 />
               </Form.Field>
-              <Button inverted color="teal" type="submit">
+              <Button color="teal" type="submit">
                 Submit
               </Button>
             </Form>
