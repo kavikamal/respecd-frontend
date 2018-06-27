@@ -16,6 +16,7 @@ import {
 import { Switch, Route, Link } from "react-router-dom";
 import Glasses from "./Glasses.jsx";
 import SideNav from "./Sidebar.jsx";
+import Create  from "./createListing.jsx";
 
 class App extends Component {
   render() {
@@ -39,7 +40,7 @@ class App extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item>
-            <Link to="/">
+            <Link to="/createListing">
               {/* <Button size="large" color="green"> */}
                 Donate
               {/* </Button> */}
@@ -57,6 +58,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses" component={Glasses} />
+          <Route path="/createListing" component={Create} />
         </Switch>
       </React.Fragment>
     );
