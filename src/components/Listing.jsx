@@ -10,10 +10,10 @@ class Listing extends Component {
         return(
             <React.Fragment>
             <Segment>
-            <div class="test">
-            <div class="image">
-              <Image src={image1}/>
-            </div>
+            <div class="listContainer">
+              <div class="image">
+                <Image src={image1}/>
+              </div>
               <div class="title">
                 <Header as="h1">Gold Wire Frame Spectacles</Header>
                 <div className="quality">
@@ -24,7 +24,7 @@ class Listing extends Component {
                 </div>
 
                 <div class="detailsBtn">
-                <Button>See More Details</Button>
+                   <Button>See More Details</Button>
                 </div>
 
                 <div class="prescription">

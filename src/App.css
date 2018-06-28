@@ -30,23 +30,26 @@
   justify-content: flex-end;
 }
 
-.test {
+.listContainer {
   /* height: 800px; */
-  /* border: 10x solid red; */
+  /* border: 1px solid red; */
   display: flex;
 }
 .title {
   /* border: 1px solid green; */
   width: 100%;
+  margin-left: 40px;
 }
 
 .quality {
   /* border: 1px solid orange; */
   display: flex;
+  
 }
 
 .image {
   border-radius: 3px;
+  /* border: 1px solid pink; */
 }
 
 #sideBar {
@@ -58,7 +61,15 @@
   /* border: 1px solid orange; */
   display: flex;
   justify-content: flex-end;
+  margin-right: 50px;
   
+}
+
+.detailsBtn {
+  /* border: 1px solid green; */
+  width: 20%;
+  margin-top: 20px;
+ 
 }
 
 #bar {
