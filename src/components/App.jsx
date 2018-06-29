@@ -13,7 +13,8 @@ import {
   Segment,
   Image
 } from "semantic-ui-react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 import Glasses from "./Glasses.jsx";
 import SideNav from "./Sidebar.jsx";
 import Create  from "./createListing.jsx";
@@ -50,5 +51,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;
