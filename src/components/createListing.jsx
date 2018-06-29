@@ -2,8 +2,61 @@ import React, { Component } from 'react';
 import '../App.css';
 import banner from "../images/banner.png";
 import { Header, Input, Rating, Segment, Container, Form } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import {titleChange, rxLeft, rxRight, quality, description, city } from '../actions/index.js'
+import reducer from '../reducers/index.js'
 
-export default class Create extends Component {
+
+class Create extends Component {
+
+
+    titleInputChange = evt => {
+        this.props.dispatch(titleChange(evt.target.value))
+    }
+
+    rxLeftChange = evt => {
+        this.props.dispatch(rxLeft(evt.target.value))
+    }
+
+    rxRightChange = evt => {
+        this.props.dispatch(rxRight(evt.target.value))
+    }
+
+    qualityChange = (evt, { rating }) => {
+        console.log({ rating })
+        this.props.dispatch(quality({ rating }));
+    }
+
+    descriptionChange = (evt) => {
+        this.props.dispatch(description(evt.target.value))
+    }
+
+    locationChange = (evt) => {
+        console.log(evt.target.value)
+        this.props.dispatch(city(evt.target.value))
+    }
+
+    listingSubmit = () => {
+        console.log(this.props.city)
+        fetch('https://re-specd-backend.herokuapp.com/glasses', {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "title": this.props.title,
+                "leftsphere": this.props.prescription.L,
+                "rightsphere": this.props.prescription.R,
+                "description": this.props.description,
+                "location": this.props.city,
+                "image": "noimage",
+                "userid": 1
+            })
+        })
+    }
+
     render() {
         return(
             <React.Fragment>
@@ -16,11 +69,12 @@ export default class Create extends Component {
                 </Segment>
 
                 <Segment>
-                Listing Title <Input/>
+                Listing Title <Input onChange={this.titleInputChange}/>
                 </Segment>
 
         <Segment>
-       Prescription <select id="rxLeft1">
+       Prescription <br/><br/>
+       L <select onChange={this.rxLeftChange} id="rxLeft1">
        <option value="-5.00">-5.00</option>
        <option value="-4.75">-4.75</option>
        <option value="-4.50">-4.50</option>
@@ -64,7 +118,7 @@ export default class Create extends Component {
        <option value="+5.00">+5.00</option>
      </select>
 
-     <select id="rxLeft2">
+     R <select onChange={this.rxRightChange} id="rxLeft2">
        <option value="-5.00">-5.00</option>
        <option value="-4.75">-4.75</option>
        <option value="-4.50">-4.50</option>
@@ -108,25 +162,42 @@ export default class Create extends Component {
        <option value="+5.00">+5.00</option>
      </select>
      </Segment>
+
      <Segment>
             <div>
-     Condition <Rating icon='star' defaultRating={3} maxRating={4} />
+     Condition <Rating onRate={this.qualityChange} icon='star' defaultRating={0} maxRating={4} />
             </div>
-            </Segment>
+    </Segment>
+
      </div>
+
+    
 
 
      <div class="picContainer">
-     <div class="picture">
-     <Segment>
-     
 
-        Upload Images <Form.Input type="file" name="pic" accept="image/*"/>
-        <Form.Input type="submit"/>
-    
-    </Segment>
+          <Segment>
+         <div class="description" >
+           Description <Input onChange={this.descriptionChange}/>
+         </div>
+         </Segment>
+         <Segment>
+         <div>
+         Location <Input onChange={this.locationChange}/>
+         </div>
+         </Segment>
+       <div class="picture">
+         <Segment>
+             Upload Images <Form.Input method="post" type="file" name="pic" accept="image/*"/>
+         </Segment>
+
+         
+        </div>
+        <Form.Button onClick={this.listingSubmit} color="teal" type="submit">Create Listing</Form.Button>
+       
     </div>
-    </div>
+
+      
      </div>
     </Container>
     </Form>
@@ -135,3 +206,12 @@ export default class Create extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        title: state.title,
+        prescription: state.prescription
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Create));
