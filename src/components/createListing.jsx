@@ -4,8 +4,8 @@ import banner from "../images/banner.png";
 import { Header, Input, Rating, Segment, Container, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {titleChange, rxLeft, rxRight, quality, description, city } from '../actions/index.js'
-import reducer from '../reducers/index.js'
+import {titleChange, rxLeft, rxRight, quality, description, city, imageString } from '../actions/glassesAction.js'
+
 
 
 class Create extends Component {
@@ -37,6 +37,10 @@ class Create extends Component {
         this.props.dispatch(city(evt.target.value))
     }
 
+    imageChange = (evt) => {
+        this.props.dispatch(imageString(evt.target.file[0].name))
+    }
+ 
     listingSubmit = () => {
         console.log(this.props.city)
         fetch('https://re-specd-backend.herokuapp.com/glasses', {
@@ -188,7 +192,7 @@ class Create extends Component {
          </Segment>
        <div class="picture">
          <Segment>
-             Upload Images <Form.Input method="post" type="file" name="pic" accept="image/*"/>
+             Upload Images <Form.Input onChange={this.imageChange} method="post" type="file" name="pic" accept="image/*"/>
          </Segment>
 
          
@@ -210,7 +214,10 @@ class Create extends Component {
 const mapStateToProps = (state) => {
     return {
         title: state.title,
-        prescription: state.prescription
+        prescription: state.prescription,
+        condition: state.condition,
+        description: state.description,
+        city: state.city
     }
 }
 
