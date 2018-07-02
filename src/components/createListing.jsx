@@ -38,7 +38,8 @@ class Create extends Component {
     }
 
     imageChange = (evt) => {
-        this.props.dispatch(imageString(evt.target.file[0].name))
+        console.log(evt.target.files[0].name)
+        this.props.dispatch(imageString(evt.target.files[0]))
     }
  
     listingSubmit = () => {
