@@ -6,19 +6,22 @@ import Listing from './Listing.jsx';
 
 
 class Glasses extends Component {
-
-    
+    state = {
+        glasses: [],
+      };
+      componentDidMount() {
+        fetch("https://re-specd-backend.herokuapp.com/glasses")
+          .then(response => response.json())
+          .then(data => {
+            console.log("glasses fetch", data.data);
+            this.setState({ glasses: data.data });
+          })
+      };
     render() {
-        
+        const { glasses } = this.state;
         return (
             <React.Fragment>
-               
-        
-                <Listing />
-                <Listing />
-                <Listing />
-                
-        
+                <Listing glasses={glasses}/>
             </React.Fragment>
         )
     }
