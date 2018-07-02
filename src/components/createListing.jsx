@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import banner from "../images/banner.png";
+// import banner from "../images/banner.png";
 import { Header, Input, Rating, Segment, Container, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -33,17 +33,24 @@ class Create extends Component {
     }
 
     locationChange = (evt) => {
-        console.log(evt.target.value)
+        // console.log(evt.target.value)
         this.props.dispatch(city(evt.target.value))
     }
 
     imageChange = (evt) => {
-        console.log(evt.target.files[0].name)
+        // console.log(evt.target.files[0].name)
         this.props.dispatch(imageString(evt.target.files[0]))
     }
+
+    // listingSubmit = () => {
+    //     console.log(this.props.condition)
+    // }
+
  
     listingSubmit = () => {
-        console.log(this.props.city)
+        console.log(this.props.condition)
+
+        console.log(this.props.whatever)
         fetch('https://re-specd-backend.herokuapp.com/glasses', {
             method: "POST",
             mode: "cors",
@@ -52,8 +59,9 @@ class Create extends Component {
             },
             body: JSON.stringify({
                 "title": this.props.title,
-                "leftsphere": this.props.prescription.L,
-                "rightsphere": this.props.prescription.R,
+                "leftsphere": this.props.leftsphere,
+                "rightsphere": this.props.rightsphere,
+                "rating": this.props.condition,
                 "description": this.props.description,
                 "location": this.props.city,
                 "image": "noimage",
@@ -67,8 +75,8 @@ class Create extends Component {
             <React.Fragment>
                 <Form>
             <Container>
-                <div class="container">
-                <div class="donate">
+                <div className="container">
+                <div className="donate">
                  <Segment>    
                 <Header as="h1">Have old glasses you'd like to donate?  Create a Listing</Header>
                 </Segment>
@@ -179,10 +187,10 @@ class Create extends Component {
     
 
 
-     <div class="picContainer">
+     <div className="picContainer">
 
           <Segment>
-         <div class="description" >
+         <div className="description" >
            Description <Input onChange={this.descriptionChange}/>
          </div>
          </Segment>
@@ -191,7 +199,7 @@ class Create extends Component {
          Location <Input onChange={this.locationChange}/>
          </div>
          </Segment>
-       <div class="picture">
+       <div className="picture">
          <Segment>
              Upload Images <Form.Input onChange={this.imageChange} method="post" type="file" name="pic" accept="image/*"/>
          </Segment>
@@ -199,6 +207,8 @@ class Create extends Component {
          
         </div>
         <Form.Button onClick={this.listingSubmit} color="teal" type="submit">Create Listing</Form.Button>
+
+        
        
     </div>
 
@@ -214,11 +224,13 @@ class Create extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        title: state.title,
-        prescription: state.prescription,
-        condition: state.condition,
-        description: state.description,
-        city: state.city
+        title: state.glassesReducer.title,
+        rightsphere: state.glassesReducer.rightsphere,
+        leftsphere: state.glassesReducer.leftsphere,
+        condition: state.glassesReducer.condition,
+        description: state.glassesReducer.description,
+        city: state.glassesReducer.city,
+        whatever: state
     }
 }
 
