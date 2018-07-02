@@ -37,9 +37,9 @@ const reducer = (state = initialState, action) => {
             let newState5 = {...state};
             newState5.city = action.payload;
             return newState5;
-            
+        default: 
+            return state;  
     }
-    return state;
 }
 
 export default reducer;

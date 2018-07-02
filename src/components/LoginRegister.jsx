@@ -1,58 +1,103 @@
 import React, { Component } from "react";
-import { Button, Form, Divider, Container, Header, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Divider,
+  Container,
+  Header,
+  Segment
+} from "semantic-ui-react";
 
 export default class LoginRegister extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            username: "",
-            password: "",
-
-        }
-    }
-    handleChange = field => e => {
-        this.setState({ [field]: e.target.value });
-      };
-    handleRegisterSubmit = e => {
-        e.preventDefault();
-        const postOptions = {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            username: this.state.username
-            // password: "this.state.password",
-            // displayName: "this.state.username"
-          })
-        };
-        fetch("https://re-specd-backend.herokuapp.com/register", postOptions)
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-          })
-          .catch(e => {
-            console.log(e);
-          });
-      };
-    render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      confirmPwd: "",
+      loginEmail: "",
+      loginPwd: "",
+      loginSuccess: false
+    };
+  }
+  handleChange = field => e => {
+    this.setState({ [field]: e.target.value });
+  };
+  handleRegisterSubmit = e => {
+    e.preventDefault();
+    const postOptions = {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        email: this.state.email,
+        password: this.state.password
+      })
+    };
+    fetch("https://re-specd-backend.herokuapp.com/register", postOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        if (data.status === "success") {this.setState({ firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+        confirmPwd: "",
+        loginSuccess: true
+      })}
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+  render() {
     return (
       <React.Fragment>
         <Container text>
-        <Segment textAlign="center" padded="heavy" inverted color="teal">
-          <Header as="h1">Welcome to Re-Spec'd!</Header>
-        </Segment>
+          <Segment textAlign="center" padded="heavy" inverted color="teal">
+            <Header size="huge">Welcome! </Header>
+          </Segment>
           <Container text>
-            <Header as="h2">New to Re-Spec'd? Register here!</Header>
+            <Segment color="teal">
+              <Header size="large">New to Re-Spec'd? Register here!</Header>
+            </Segment>
             <Form onSubmit={this.handleRegisterSubmit}>
               <Form.Field>
                 <Form.Input
-                  onChange={this.handleChange("username")}
+                  onChange={this.handleChange("firstname")}
                   fluid
-                  label="Username"
+                  label="First Name"
                   type="text"
-                  placeholder="Username"
+                  placeholder="First Name"
+                  value={this.state.firstname}
+                  required
+                />
+              </Form.Field>
+              <Form.Field>
+                <Form.Input
+                  onChange={this.handleChange("lastname")}
+                  fluid
+                  label="Last Name"
+                  type="text"
+                  placeholder="Last Name"
+                  value={this.state.lastname}
+                  required
+                />
+              </Form.Field>
+              <Form.Field>
+                <Form.Input
+                  onChange={this.handleChange("email")}
+                  fluid
+                  label="Email"
+                  type="email"
+                  placeholder="Email"
+                  value={this.state.email}
                   required
                 />
               </Form.Field>
@@ -63,35 +108,39 @@ export default class LoginRegister extends Component {
                   label="Password"
                   type="password"
                   placeholder="Password"
+                  value={this.state.password}
                   required
                 />
               </Form.Field>
               <Form.Field>
                 <Form.Input
-                // onChange={""}
+                  onChange={this.handleChange("confirmPwd")}
                   fluid
                   label="Confirm Password"
                   type="password"
                   placeholder="Confirm Password"
+                  value={this.state.confirmPwd}
                   required
                 />
               </Form.Field>
-              <Button  color="teal" type="submit">
+              <Button color="teal" type="submit">
                 Submit
               </Button>
             </Form>
           </Container>
           <Divider horizontal>OR</Divider>
           <Container text>
-            <Header as="h2">Already a member? Login</Header>
+            <Segment color="teal">
+              <Header as="h2">Already a member? Login</Header>
+            </Segment>
             <Form onSubmit={""}>
               <Form.Field>
                 <Form.Input
                   onChange={""}
                   fluid
-                  label="Username"
-                  type="text"
-                  placeholder="Username"
+                  label="Email"
+                  type="email"
+                  placeholder="Email"
                   required
                 />
               </Form.Field>
