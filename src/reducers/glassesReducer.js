@@ -1,9 +1,14 @@
-import { TITLE, RX_LEFT, RX_RIGHT, QUALITY, DESCRIPTION, CITY, IMAGE } from '../actions/index.js'
+import { TITLE, RX_LEFT, RX_RIGHT, QUALITY, DESCRIPTION, CITY, IMAGE, CYL_LEFT, CYL_RIGHT, LEFT_AXIS, RIGHT_AXIS, ADD_POWER } from '../actions/index.js'
 
 export const glassesState = {
     title: "",
     leftsphere: "",
     rightsphere: "",
+    leftcylinder: "",
+    rightcylinder: "",
+    leftaxis: "",
+    rightaxis: "",
+    add: "",
     condition: "",
     description: "",
     city: "",
@@ -40,6 +45,26 @@ export const glassesReducer = (state = glassesState, action) => {
             let newState6 = {...state};
             newState6.image = action.payload.name;
             return newState6;
+        case CYL_LEFT:
+            let newState7 = {...state};
+            newState7.leftcylinder = action.payload;
+            return newState7;
+        case CYL_RIGHT:
+            let newState8 = {...state};
+            newState8.rightcylinder = action.payload;
+            return newState8;
+        case RIGHT_AXIS: 
+            let newState9 = {...state};
+            newState9.rightaxis = action.payload;
+            return newState9;
+        case LEFT_AXIS:
+            let newState10 = {...state};
+            newState10.leftaxis = action.payload;
+            return newState10;
+        case ADD_POWER:
+            let newState11 = {...state};
+            newState11.add = action.payload;
+            return newState11;
         default: 
             return state;
     }
