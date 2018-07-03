@@ -8,6 +8,7 @@ import {
   Rating,
 } from "semantic-ui-react";
 import image1 from "../images/image1.jpg";
+import { Link } from 'react-router-dom';
 
 class Listing extends Component {
   
@@ -16,11 +17,11 @@ class Listing extends Component {
       <React.Fragment>
         {this.props.glasses.map((item, index) => (
           <Segment key={index}>
-            <div class="listContainer">
-              <div class="image">
+            <div className="listContainer">
+              <div className="image">
                 <Image src={image1} />
               </div>
-              <div class="title">
+              <div className="title">
                 <Header as="h1">{item.title}</Header>
                 <div className="quality">
                   <Rating
@@ -31,27 +32,34 @@ class Listing extends Component {
                   />
                 </div>
 
-                <div class="detailsBtn">
-                  <Button>See More Details</Button>
+                <div className="detailsBtn">
+                  <Button as={Link} to={`/${item.glassesid}`}>See More Details</Button>
                 </div>
-                <div class="prescription">
-                  <table border="1" cellspacing="0" cellpadding="2" class="rx">
+                <div className="prescription">
+                  <table border="1" cellSpacing="0" cellPadding="2" className="rx">
                     <tbody>
-                      <tr class="h">
+                      <tr className="h">
                         <th />
                         <th>Sph</th>
                         <th>Cyl</th>
+                        <th>Axis</th>
+                        <th>Add</th>
                       </tr>
-                      <tr class="r">
+                      <tr className="r">
                         <td>R</td>
                         <td>{item.rightsphere}</td>
-                        <td>0.00</td>
+                        <td>{item.rightcylinder}</td>
+                        <td>{item.rightaxis}</td>
+                        <td>{item.add}</td>
                       </tr>
                       <tr>
                         <th>L</th>
                         <td>{item.leftsphere}</td>
-                        <td>0.00</td>
+                        <td>{item.leftcylinder}</td>
+                        <td>{item.leftaxis}</td>
+                        <td>{item.add}</td>
                       </tr>
+                       
                     </tbody>
                   </table>
                 </div>
