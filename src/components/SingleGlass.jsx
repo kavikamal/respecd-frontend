@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-export default class Individual extends Component {
+export default class SingleGlass extends Component {
     render() {
         return(
             <React.Fragment>

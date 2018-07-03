@@ -27,7 +27,8 @@ class Listing extends Component {
                 <div className="quality">
                   <Rating
                     icon="star"
-                    defaultRating={3}
+                    rating={item.rating}
+                    defaultRating={0}
                     maxRating={4}
                     disabled
                   />

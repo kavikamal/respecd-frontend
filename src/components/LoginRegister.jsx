@@ -56,11 +56,32 @@ export default class LoginRegister extends Component {
         console.log(e);
       });
   };
+  handleLoginSubmit = e => {
+    e.preventDefault();
+    const postOptions = {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: this.state.loginEmail,
+        password: this.state.loginPwd
+      })
+    };
+    fetch("https://re-specd-backend.herokuapp.com/login", postOptions)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      data.auth ? this.props.history.push("/glasses") : alert("Incorrect Username or Password")
+    })
+    .catch(err=> console.log(err))
+  }
   render() {
     return (
       <React.Fragment>
         <Container text>
-          <Segment textAlign="center" padded="heavy" inverted color="teal">
+          <Segment textAlign="center" inverted color="teal">
             <Header size="huge">Welcome! </Header>
           </Segment>
           <Container text>
@@ -133,10 +154,10 @@ export default class LoginRegister extends Component {
             <Segment color="teal">
               <Header as="h2">Already a member? Login</Header>
             </Segment>
-            <Form onSubmit={""}>
+            <Form onSubmit={this.handleLoginSubmit}>
               <Form.Field>
                 <Form.Input
-                  onChange={""}
+                  onChange={this.handleChange("loginEmail")}
                   fluid
                   label="Email"
                   type="email"
@@ -146,7 +167,7 @@ export default class LoginRegister extends Component {
               </Form.Field>
               <Form.Field>
                 <Form.Input
-                  onChange={""}
+                  onChange={this.handleChange("loginPwd")}
                   fluid
                   label="Password"
                   type="password"
