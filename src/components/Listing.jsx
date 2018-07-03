@@ -8,8 +8,6 @@ import {
   Rating,
 } from "semantic-ui-react";
 import image1 from "../images/image1.jpg";
-import star from "../images/star.png";
-import starOff from "../images/star_off.png";
 
 class Listing extends Component {
   
@@ -28,7 +26,6 @@ class Listing extends Component {
                   <Rating
                     icon="star"
                     rating={item.rating}
-                    defaultRating={0}
                     maxRating={4}
                     disabled
                   />

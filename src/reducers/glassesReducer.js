@@ -1,11 +1,13 @@
-import { TITLE, RX_LEFT, RX_RIGHT, QUALITY, DESCRIPTION, CITY } from '../actions/index.js'
+import { TITLE, RX_LEFT, RX_RIGHT, QUALITY, DESCRIPTION, CITY, IMAGE } from '../actions/index.js'
 
 export const glassesState = {
     title: "",
-    prescription: {L: "", R: ""},
-    condition: {rating: ""},
+    leftsphere: "",
+    rightsphere: "",
+    condition: "",
     description: "",
-    city: ""
+    city: "",
+    image: ""
 }
 
 export const glassesReducer = (state = glassesState, action) => {
@@ -16,15 +18,15 @@ export const glassesReducer = (state = glassesState, action) => {
             return newState;
         case RX_LEFT:
             let newState1 = {...state};
-            newState1.prescription.L = action.payload;
+            newState1.leftsphere = action.payload;
             return newState1;
         case RX_RIGHT:
             let newState2 = {...state};
-            newState2.prescription.R = action.payload;
+            newState2.rightsphere = action.payload;
             return newState2;
         case QUALITY:
             let newState3 = {...state};
-            newState3.condition = action.payload;
+            newState3.condition = action.payload.rating;
             return newState3;
         case DESCRIPTION:
             let newState4 = {...state};
@@ -34,8 +36,13 @@ export const glassesReducer = (state = glassesState, action) => {
             let newState5 = {...state};
             newState5.city = action.payload;
             return newState5;
-            
+        case IMAGE:
+            let newState6 = {...state};
+            newState6.image = action.payload.name;
+            return newState6;
+        default: 
+            return state;
     }
-    return state;
+    // return state;
 }
 
