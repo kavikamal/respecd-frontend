@@ -11,77 +11,49 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import {
-  titleChange,
-  rxLeft,
-  rxRight,
-  quality,
-  description,
-  city,
-  imageString,
-  cylRight,
-  cylLeft,
-  addPower,
-  rightAxis,
-  leftAxis
-} from "../actions/glassesAction.js";
+import { glassesCreate } from "../actions/glassesAction.js";
 
 class Create extends Component {
-  titleInputChange = evt => {
-    this.props.dispatch(titleChange(evt.target.value));
+  state = {
+    glassesObject: {
+      title: "",
+      leftsphere: "",
+      rightsphere: "",
+      leftcylinder: "",
+      rightcylinder: "",
+      leftaxis: "",
+      rightaxis: "",
+      add: "",
+      condition: "",
+      description: "",
+      city: "",
+      pic: ""
+    }
   };
 
-  rxLeftChange = evt => {
-    this.props.dispatch(rxLeft(evt.target.value));
-  };
-
-  rxRightChange = evt => {
-    this.props.dispatch(rxRight(evt.target.value));
-  };
-
-  rightCylChange = evt => {
-    this.props.dispatch(cylRight(evt.target.value));
-  };
-
-  leftCylChange = evt => {
-    this.props.dispatch(cylLeft(evt.target.value));
-  };
-
-  addPowerChange = evt => {
-    this.props.dispatch(addPower(evt.target.value));
-  };
-
-  rightAxisChange = evt => {
-    this.props.dispatch(rightAxis(evt.target.value));
-  };
-
-  leftAxisChange = evt => {
-    this.props.dispatch(leftAxis(evt.target.value));
-  };
-
-  qualityChange = (evt, { rating }) => {
-    console.log({ rating });
-    this.props.dispatch(quality({ rating }));
-  };
-
-  descriptionChange = evt => {
-    this.props.dispatch(description(evt.target.value));
-  };
-
-  locationChange = evt => {
-    // console.log(evt.target.value)
-    this.props.dispatch(city(evt.target.value));
+  handleChange = event => {
+    const field = event.target.name;
+    const glassesObject = this.state.glassesObject;
+    glassesObject[field] = event.target.value;
+    this.setState({
+      glassesObject: glassesObject
+    });
+    console.log(this.state);
   };
 
   imageChange = evt => {
-    // console.log(evt.target.files[0].name)
-    this.props.dispatch(imageString(evt.target.files[0]));
+    this.glassesObject.image = evt.target.files[0];
+    console.log(this.glassesObject);
+  };
+
+  createGlass = () => {
+    this.props.dispatch(glassesCreate(this.state.glassesObject));
   };
 
   listingSubmit = evt => {
     evt.preventDefault();
     fetch(
-      'https://re-specd-backend.herokuapp.com/glasses' /*"http://127.0.0.1:3000/glasses"*/,
+      "https://re-specd-backend.herokuapp.com/glasses" /*"http://127.0.0.1:3000/glasses"*/,
       {
         method: "POST",
         mode: "cors",
@@ -110,7 +82,11 @@ class Create extends Component {
   render() {
     return (
       <React.Fragment>
-        <Form action="https://re-specd-backend.herokuapp.com/glasses" method="POST" encType="multipart/form-data">
+        <Form
+          action="https://re-specd-backend.herokuapp.com/glasses"
+          method="POST"
+          encType="multipart/form-data"
+        >
           <Container>
             <div className="container">
               <div className="donate">
@@ -121,13 +97,19 @@ class Create extends Component {
                 </Segment>
 
                 <Segment>
-                  Listing Title <Input onChange={this.titleInputChange} />
+                  Listing Title{" "}
+                  <Input onChange={this.handleChange} name="title" />
                 </Segment>
 
                 <Segment>
                   Prescription <br />
                   <br />
-                  L Sphere<select onChange={this.rxLeftChange} id="rxLeft1">
+                  L Sphere<select
+                    onChange={this.handleChange}
+                    default={0.0}
+                    id="rxLeft1"
+                    name="leftsphere"
+                  >
                     <option value="-20.00">-20.00</option>
                     <option value="-19.75">-19.75</option>
                     <option value="-19.50">-19.50</option>
@@ -208,7 +190,9 @@ class Create extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option value="0.00">0.00</option>
+                    <option selected="selected" value="0.00">
+                      0.00
+                    </option>
                     <option value="+0.25">+0.25</option>
                     <option value="+0.50">+0.50</option>
                     <option value="+0.75">+0.75</option>
@@ -290,7 +274,11 @@ class Create extends Component {
                     <option value="+19.75">+19.75</option>
                     <option value="+20.00">+20.00</option>
                   </select>
-                  R Sphere<select onChange={this.rxRightChange} id="rxLeft2">
+                  R Sphere<select
+                    onChange={this.handleChange}
+                    id="rxLeft2"
+                    name="rightsphere"
+                  >
                     <option value="-20.00">-20.00</option>
                     <option value="-19.75">-19.75</option>
                     <option value="-19.50">-19.50</option>
@@ -371,7 +359,9 @@ class Create extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option value="0.00">0.00</option>
+                    <option selected="selected" value="0.00">
+                      0.00
+                    </option>
                     <option value="+0.25">+0.25</option>
                     <option value="+0.50">+0.50</option>
                     <option value="+0.75">+0.75</option>
@@ -453,7 +443,11 @@ class Create extends Component {
                     <option value="+19.75">+19.75</option>
                     <option value="+20.00">+20.00</option>
                   </select>
-                  L Cylinder<select onChange={this.leftCylChange} id="leftCyl">
+                  L Cylinder<select
+                    onChange={this.handleChange}
+                    id="leftCyl"
+                    name="leftcylinder"
+                  >
                     <option value="-20.00">-20.00</option>
                     <option value="-19.75">-19.75</option>
                     <option value="-19.50">-19.50</option>
@@ -534,7 +528,9 @@ class Create extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option value="0.00">0.00</option>
+                    <option selected="selected" value="0.00">
+                      0.00
+                    </option>
                     <option value="+0.25">+0.25</option>
                     <option value="+0.50">+0.50</option>
                     <option value="+0.75">+0.75</option>
@@ -617,8 +613,9 @@ class Create extends Component {
                     <option value="+20.00">+20.00</option>
                   </select>
                   R Cylinder<select
-                    onChange={this.rightCylChange}
+                    onChange={this.handleChange}
                     id="rightCyl"
+                    name="rightcylinder"
                   >
                     <option value="-20.00">-20.00</option>
                     <option value="-19.75">-19.75</option>
@@ -700,7 +697,9 @@ class Create extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option value="0.00">0.00</option>
+                    <option selected="selected" value="0.00">
+                      0.00
+                    </option>
                     <option value="+0.25">+0.25</option>
                     <option value="+0.50">+0.50</option>
                     <option value="+0.75">+0.75</option>
@@ -783,7 +782,11 @@ class Create extends Component {
                     <option value="+20.00">+20.00</option>
                   </select>
                   L Axis{" "}
-                  <select onChange={this.leftAxisChange} id="axis">
+                  <select
+                    onChange={this.handleChange}
+                    id="axis"
+                    name="leftaxis"
+                  >
                     <option value="0">0°</option>
                     <option value="1">1°</option>
                     <option value="2">2°</option>
@@ -967,7 +970,11 @@ class Create extends Component {
                     <option value="180">180°</option>
                   </select>
                   R Axis{" "}
-                  <select onChange={this.rightAxisChange} id="axis">
+                  <select
+                    onChange={this.handleChange}
+                    id="axis"
+                    name="rightaxis"
+                  >
                     <option value="0">0°</option>
                     <option value="1">1°</option>
                     <option value="2">2°</option>
@@ -1151,7 +1158,7 @@ class Create extends Component {
                     <option value="180">180°</option>
                   </select>
                   Add{" "}
-                  <select onChange={this.addPowerChange}>
+                  <select onChange={this.handleChange} name="add">
                     <option value="0.00">0.00</option>
                     <option value="+0.25">+0.25</option>
                     <option value="+0.50">+0.50</option>
@@ -1176,7 +1183,8 @@ class Create extends Component {
                   <div>
                     Condition{" "}
                     <Rating
-                      onRate={this.qualityChange}
+                      onRate={this.handleChange}
+                      name="condition"
                       icon="star"
                       defaultRating={0}
                       maxRating={4}
@@ -1187,20 +1195,20 @@ class Create extends Component {
 
               <div className="picContainer">
                 <Segment>
-                  <div className="description">
-                    Description <Input onChange={this.descriptionChange} />
+                  <div className="description" name="description">
+                    Description <Input onChange={this.handleChange} />
                   </div>
                 </Segment>
                 <Segment>
                   <div>
-                    Location <Input onChange={this.locationChange} />
+                    Location <Input onChange={this.handleChange} name="city" />
                   </div>
                 </Segment>
                 <div className="picture">
                   <Segment>
                     Upload Images{" "}
                     <Form.Input
-                      onChange={this.imageChange}
+                      onChange={this.handleChange}
                       method="post"
                       type="file"
                       name="pic"
@@ -1209,7 +1217,7 @@ class Create extends Component {
                   </Segment>
                 </div>
                 <Form.Button
-                  onClick={this.listingSubmit}
+                  onClick={this.createGlass}
                   color="teal"
                   type="submit"
                 >
@@ -1237,7 +1245,7 @@ const mapStateToProps = state => {
     condition: state.glassesReducer.condition,
     description: state.glassesReducer.description,
     city: state.glassesReducer.city,
-    image: state.glassesReducer.image
+    pic: state.glassesReducer.pic
   };
 };
 
