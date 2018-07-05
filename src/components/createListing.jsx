@@ -4,62 +4,92 @@ import '../App.css';
 import { Header, Input, Rating, Segment, Container, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {titleChange, rxLeft, rxRight, quality, description, city, imageString, cylRight, cylLeft, addPower, rightAxis, leftAxis } from '../actions/glassesAction.js'
+import { glassesCreate } from '../actions/glassesAction.js'
 
 
 
 class Create extends Component {
 
+    glassesObject = {
+        title: "",
+        leftsphere: "",
+        rightsphere: "",
+        leftcylinder: "",
+        rightcylinder: "",
+        leftaxis: "",
+        rightaxis: "",
+        add: "",
+        condition: "",
+        description: "",
+        city: "",
+        image: ""
+    }
+
+    createGlass = () => {
+        this.props.dispatch(glassesCreate(this.glassesObject))
+    }
+
 
     titleInputChange = evt => {
-        this.props.dispatch(titleChange(evt.target.value))
+        this.glassesObject.title = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     rxLeftChange = evt => {
-        this.props.dispatch(rxLeft(evt.target.value))
+        this.glassesObject.leftsphere = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     rxRightChange = evt => {
-        this.props.dispatch(rxRight(evt.target.value))
+        this.glassesObject.rightsphere = evt.target.value;
+        console.log(this.glassesObject)
     }
 
     rightCylChange = evt => {
-        this.props.dispatch(cylRight(evt.target.value))
+        this.glassesObject.rightcylinder = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     leftCylChange = evt => {
-        this.props.dispatch(cylLeft(evt.target.value))
+        this.glassesObject.leftcylinder = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     addPowerChange = evt => {
-        this.props.dispatch(addPower(evt.target.value))
+        this.glassesObject.add = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     rightAxisChange = evt => {
-        this.props.dispatch(rightAxis(evt.target.value))
+        this.glassesObject.rightaxis = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     leftAxisChange = evt => {
-        this.props.dispatch(leftAxis(evt.target.value))
+        this.glassesObject.leftaxis = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     qualityChange = (evt, { rating }) => {
-        console.log({ rating })
-        this.props.dispatch(quality({ rating }));
+        this.glassesObject.condition = { rating };
+        console.log(this.glassesObject);
     }
 
     descriptionChange = (evt) => {
-        this.props.dispatch(description(evt.target.value))
+        this.glassesObject.description = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     locationChange = (evt) => {
-        // console.log(evt.target.value)
-        this.props.dispatch(city(evt.target.value))
+        this.glassesObject.city = evt.target.value;
+        console.log(this.glassesObject);
     }
 
     imageChange = (evt) => {
         // console.log(evt.target.files[0].name)
-        this.props.dispatch(imageString(evt.target.files[0]))
+        // this.props.dispatch(imageString(evt.target.files[0]))
+        this.glassesObject.image = evt.target.files[0];
+        console.log(this.glassesObject);
     }
 
   
@@ -110,7 +140,7 @@ class Create extends Component {
 
         <Segment>
        Prescription <br/><br/>
-       L Sphere<select onChange={this.rxLeftChange} id="rxLeft1">
+       L Sphere<select onChange={this.rxLeftChange} default={0.00} id="rxLeft1">
        <option value="-20.00">-20.00</option>
        <option value="-19.75">-19.75</option>
        <option value="-19.50">-19.50</option>
@@ -191,7 +221,7 @@ class Create extends Component {
        <option value="-0.75">-0.75</option>
        <option value="-0.50">-0.50</option>
        <option value="-0.25">-0.25</option>
-       <option value="0.00">0.00</option>
+       <option selected="selected" value="0.00">0.00</option>
        <option value="+0.25">+0.25</option>
        <option value="+0.50">+0.50</option>
        <option value="+0.75">+0.75</option>
@@ -355,7 +385,7 @@ class Create extends Component {
        <option value="-0.75">-0.75</option>
        <option value="-0.50">-0.50</option>
        <option value="-0.25">-0.25</option>
-       <option value="0.00">0.00</option>
+       <option selected="selected" value="0.00">0.00</option>
        <option value="+0.25">+0.25</option>
        <option value="+0.50">+0.50</option>
        <option value="+0.75">+0.75</option>
@@ -519,7 +549,7 @@ class Create extends Component {
        <option value="-0.75">-0.75</option>
        <option value="-0.50">-0.50</option>
        <option value="-0.25">-0.25</option>
-       <option value="0.00">0.00</option>
+       <option selected ="selected" value="0.00">0.00</option>
        <option value="+0.25">+0.25</option>
        <option value="+0.50">+0.50</option>
        <option value="+0.75">+0.75</option>
@@ -683,7 +713,7 @@ class Create extends Component {
        <option value="-0.75">-0.75</option>
        <option value="-0.50">-0.50</option>
        <option value="-0.25">-0.25</option>
-       <option value="0.00">0.00</option>
+       <option selected="selected" value="0.00">0.00</option>
        <option value="+0.25">+0.25</option>
        <option value="+0.50">+0.50</option>
        <option value="+0.75">+0.75</option>
@@ -1186,7 +1216,7 @@ class Create extends Component {
 
          
         </div>
-        <Form.Button onClick={this.listingSubmit} color="teal" type="submit">Create Listing</Form.Button>
+        <Form.Button onClick={this.createGlass} color="teal" type="submit">Create Listing</Form.Button>
 
         
        
