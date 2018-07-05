@@ -81,7 +81,7 @@ class Create extends Component {
   listingSubmit = evt => {
     evt.preventDefault();
     fetch(
-      /*'https://re-specd-backend.herokuapp.com/glasses'*/ "http://127.0.0.1:3000/glasses",
+      'https://re-specd-backend.herokuapp.com/glasses' /*"http://127.0.0.1:3000/glasses"*/,
       {
         method: "POST",
         mode: "cors",
