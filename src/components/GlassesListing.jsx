@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
+import backendurl from './config';
 import {
   Header,
   Image,
@@ -9,7 +10,7 @@ import {
 } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 
-class Listing extends Component {
+class GlassesListing extends Component {
 
   render() {
     return (
@@ -71,4 +72,4 @@ class Listing extends Component {
   }
 }
 
-export default Listing;
+export default GlassesListing;

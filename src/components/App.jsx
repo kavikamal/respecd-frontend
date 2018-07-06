@@ -10,7 +10,7 @@ import {
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import Glasses from "./Glasses.jsx";
-import Create  from "./createListing.jsx";
+import CreateGlass  from "./CreateGlass";
 import Frames from "./Frames";
 import CreateFrame from "./CreateFrame";
 
@@ -38,7 +38,7 @@ class App extends Component {
             <Menu.Item as={Link} to={"/glasses"} name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
               <Icon name="newspaper"/>Browse
             </Menu.Item>
-            <Menu.Item as={Link} to={"/createListing"} name='donate' active={activeItem === 'donate'} onClick={this.handleItemClick}>
+            <Menu.Item as={Link} to={"/createGlass"} name='donate' active={activeItem === 'donate'} onClick={this.handleItemClick}>
             <Icon name="add"/>Donate
             </Menu.Item>
             <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
@@ -48,7 +48,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses" component={Glasses} />
-          <Route path="/createListing" component={Create} />
+          <Route path="/createGlass" component={CreateGlass} />
           <Route path="/frames" component={Frames} />
           <Route path="/createFrame" component={CreateFrame} />
         </Switch>

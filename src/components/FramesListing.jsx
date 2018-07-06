@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
+import backendurl from './config';
 import {
   Header,
   Image,

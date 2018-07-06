@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
+import backendurl from './config';
 // import banner from "../images/banner.png";
 import {
   Header,
@@ -45,8 +46,7 @@ class CreateFrame extends Component {
 
   listingSubmit = evt => {
     evt.preventDefault();
-    fetch(
-      "https://re-specd-backend.herokuapp.com/frames" /*"http://127.0.0.1:3000/frames"*/,
+    fetch(backendurl+"/frames",
       {
         method: "POST",
         mode: "cors",
@@ -69,7 +69,7 @@ class CreateFrame extends Component {
     return (
       <React.Fragment>
         <Form
-          action="https://re-specd-backend.herokuapp.com/frames"
+          action={backendurl+"/frames"}
           method="POST"
           encType="multipart/form-data"
         >
