@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
 import './App.jsx';
+import backendurl from './config';
 // import { Button, Form, Divider, Container, Header, Sidebar, Segment, Menu, Icon, Image } from 'semantic-ui-react';
-import Listing from './Listing.jsx';
+import GlassesListing from './GlassesListing';
 
 
 class Glasses extends Component {
@@ -10,7 +11,7 @@ class Glasses extends Component {
         glasses: [],
       };
       componentDidMount() {
-        fetch("https://re-specd-backend.herokuapp.com/glasses")
+        fetch(backendurl+"/glasses")
           .then(response => response.json())
           .then(data => {
             console.log("glasses fetch", data.data);
@@ -21,7 +22,7 @@ class Glasses extends Component {
         const { glasses } = this.state;
         return (
             <React.Fragment>
-                <Listing glasses={glasses}/>
+                <GlassesListing glasses={glasses}/>
             </React.Fragment>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
+import backendurl from './config';
 // import banner from "../images/banner.png";
 import {
   Header,
@@ -13,7 +14,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { glassesCreate } from "../actions/glassesAction.js";
 
-class Create extends Component {
+class CreateGlass extends Component {
   state = {
     glassesObject: {
       title: "",
@@ -52,8 +53,7 @@ class Create extends Component {
 
   listingSubmit = evt => {
     evt.preventDefault();
-    fetch(
-      "https://re-specd-backend.herokuapp.com/glasses" /*"http://127.0.0.1:3000/glasses"*/,
+    fetch(backendurl+"/glasses",
       {
         method: "POST",
         mode: "cors",
@@ -83,7 +83,7 @@ class Create extends Component {
     return (
       <React.Fragment>
         <Form
-          action="https://re-specd-backend.herokuapp.com/glasses"
+          action= {backendurl +"/glasses"} /*"https://re-specd-backend.herokuapp.com/glasses"*/
           method="POST"
           encType="multipart/form-data"
         >
@@ -1249,4 +1249,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Create));
+export default withRouter(connect(mapStateToProps)(CreateGlass));

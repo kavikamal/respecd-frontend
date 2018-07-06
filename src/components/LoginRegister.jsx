@@ -7,6 +7,7 @@ import {
   Header,
   Segment
 } from "semantic-ui-react";
+import backendurl from './config';
 
 export default class LoginRegister extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ export default class LoginRegister extends Component {
         password: this.state.password
       })
     };
-    fetch("https://re-specd-backend.herokuapp.com/register", postOptions)
+    fetch(backendurl+"/register", postOptions)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -69,7 +70,7 @@ export default class LoginRegister extends Component {
         password: this.state.loginPwd
       })
     };
-    fetch("https://re-specd-backend.herokuapp.com/login", postOptions)
+    fetch(backendurl+"/login", postOptions)
     .then(response => response.json())
     .then(data => {
       console.log(data)
