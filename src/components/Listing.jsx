@@ -7,11 +7,10 @@ import {
   Segment,
   Rating,
 } from "semantic-ui-react";
-import image1 from "../images/image1.jpg";
 import { Link } from 'react-router-dom';
 
 class Listing extends Component {
-  
+
   render() {
     return (
       <React.Fragment>
@@ -19,7 +18,7 @@ class Listing extends Component {
           <Segment key={index}>
             <div className="listContainer">
               <div className="image">
-                <Image src={image1} />
+                <Image src={item.image} />
               </div>
               <div className="title">
                 <Header as="h1">{item.title}</Header>
@@ -59,14 +58,14 @@ class Listing extends Component {
                         <td>{item.leftaxis}</td>
                         <td>{item.add}</td>
                       </tr>
-                       
+
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </Segment>
-        ))}             
+        ))}
       </React.Fragment>
     );
   }

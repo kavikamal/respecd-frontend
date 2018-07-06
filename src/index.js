@@ -13,13 +13,6 @@ const store = createStore(reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-// store.subscribe(
-//   () => {
-//     console.log("state changed", store.getState())
-    
-//   }
-// )
-
 ReactDOM.render(
 <BrowserRouter>
   <Provider store={store}>

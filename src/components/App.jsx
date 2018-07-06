@@ -11,6 +11,8 @@ import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import Glasses from "./Glasses.jsx";
 import Create  from "./createListing.jsx";
+import Frames from "./Frames";
+import CreateFrame from "./CreateFrame";
 
 class App extends Component {
   state = { activeItem: 'home' }
@@ -47,6 +49,8 @@ class App extends Component {
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses" component={Glasses} />
           <Route path="/createListing" component={Create} />
+          <Route path="/frames" component={Frames} />
+          <Route path="/createFrame" component={CreateFrame} />
         </Switch>
       </React.Fragment>
     );
