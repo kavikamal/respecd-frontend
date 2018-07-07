@@ -32,8 +32,10 @@ class App extends Component {
         <div>
         <Image src={banner} fluid />
         </div>
+
+        <div id="menuDiv">
         <Menu size="huge" color="teal" widths={4} pointing secondary>
-            <Menu.Item as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
+            <Menu.Item id="home" as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
               <Icon name="home" />Home
             </Menu.Item>
             
@@ -52,9 +54,11 @@ class App extends Component {
             </Dropdown>
             
             <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
+
             <Icon name="sign out"/>Logout
             </Menu.Item>
         </Menu>
+        </div>
         <Switch>
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses" component={Glasses} />
