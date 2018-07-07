@@ -31,20 +31,42 @@ class App extends Component {
         <div>
         <Image src={banner} fluid />
         </div>
+
+        <div id="menuDiv">
         <Menu size="huge" color="teal" widths={4} pointing secondary>
-            <Menu.Item as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
+            <Menu.Item id="home" as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
               <Icon name="home" />Home
             </Menu.Item>
-            <Menu.Item as={Link} to={"/glasses"} name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
+
+            
+            
+            <div className="dropdown">
               <Icon name="newspaper"/>Browse
-            </Menu.Item>
-            <Menu.Item as={Link} to={"/createGlass"} name='donate' active={activeItem === 'donate'} onClick={this.handleItemClick}>
+              <Menu.Item className="dropbtn" name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
+              {/* <Icon name="newspaper"/>Browse */}
+                <div className="dropdown-content">
+                  <a href="/glasses">Glasses</a>
+                  <a href="/frames">Frames</a>
+                </div> 
+              </Menu.Item>
+            </div>
+
+            <div className="dropdown">
             <Icon name="add"/>Donate
-            </Menu.Item>
-            <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
+              <Menu.Item className="dropbtn" name='donate' active={activeItem === 'donate'} onClick={this.handleItemClick}>
+              {/* <Icon name="add"/>Donate */}
+                <div className="dropdown-content">
+                  <a href="/createGlass">Glasses</a>
+                  <a href="/createFrame">Frames</a>
+                </div>
+              </Menu.Item>
+            </div>
+
+            <Menu.Item  id="logout" name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
             <Icon name="sign out"/>Logout
             </Menu.Item>
         </Menu>
+        </div>
         <Switch>
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses" component={Glasses} />
