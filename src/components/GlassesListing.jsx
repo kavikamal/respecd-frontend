@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 class GlassesListing extends Component {
 
   render() {
+    console.log(this.props.glasses)
     return (
       <React.Fragment>
         {this.props.glasses.map((item, index) => (

@@ -4,15 +4,16 @@ import banner from "../images/banner.png";
 import LoginRegister from "./LoginRegister";
 import {
   Menu,
+  Dropdown,
   Image, 
   Icon
 } from "semantic-ui-react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import Glasses from "./Glasses.jsx";
 import CreateGlass  from "./CreateGlass";
 import Frames from "./Frames";
 import CreateFrame from "./CreateFrame";
+import Glasses from "./Glasses";
 
 class App extends Component {
   state = { activeItem: 'home' }
@@ -35,12 +36,21 @@ class App extends Component {
             <Menu.Item as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
               <Icon name="home" />Home
             </Menu.Item>
-            <Menu.Item as={Link} to={"/glasses"} name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
-              <Icon name="newspaper"/>Browse
-            </Menu.Item>
-            <Menu.Item as={Link} to={"/createGlass"} name='donate' active={activeItem === 'donate'} onClick={this.handleItemClick}>
-            <Icon name="add"/>Donate
-            </Menu.Item>
+            
+            <Dropdown item  icon="newspaper" text='Browse '>
+              <Dropdown.Menu>
+              <Dropdown.Item as={Link} to={"/glasses"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
+              <Dropdown.Item as={Link} to={"/frames"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
+              </Dropdown.Menu>
+            </Dropdown>
+
+             <Dropdown item  icon="add" text='Donate '>
+              <Dropdown.Menu>
+              <Dropdown.Item as={Link} to={"/createGlass"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
+              <Dropdown.Item as={Link} to={"/createFrame"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
+              </Dropdown.Menu>
+            </Dropdown>
+            
             <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
             <Icon name="sign out"/>Logout
             </Menu.Item>

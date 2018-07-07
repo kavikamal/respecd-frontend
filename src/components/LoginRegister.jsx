@@ -7,7 +7,7 @@ import {
   Header,
   Segment
 } from "semantic-ui-react";
-import backendurl from './config';
+import {backendurl,AUTH_USER,UNAUTH_USER} from './config';
 
 export default class LoginRegister extends Component {
   constructor(props) {
@@ -28,6 +28,7 @@ export default class LoginRegister extends Component {
   };
   handleRegisterSubmit = e => {
     e.preventDefault();
+    console.log("Inside handle register")
     const postOptions = {
       method: "POST",
       mode: "cors",
@@ -74,7 +75,17 @@ export default class LoginRegister extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      data.auth ? this.props.history.push("/glasses") : alert("Incorrect Username or Password")
+    //   if (data.auth) {
+    //     dispatch({ type: AUTH_USER,
+    //             username: credentials.username,userid:data.id,
+    //             token: data.token  });
+    //     this.props.history.push("/glasses")        
+
+    // } else {
+    //     dispatch({ type: UNAUTH_USER,
+    //         message: "Login Unsuccessful" });
+    //     alert("Incorrect Username or Password")    
+    // }
     })
     .catch(err=> console.log(err))
   }
