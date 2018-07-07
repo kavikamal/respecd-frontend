@@ -4,15 +4,16 @@ import banner from "../images/banner.png";
 import LoginRegister from "./LoginRegister";
 import {
   Menu,
+  Dropdown,
   Image, 
   Icon
 } from "semantic-ui-react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import Glasses from "./Glasses.jsx";
 import CreateGlass  from "./CreateGlass";
 import Frames from "./Frames";
 import CreateFrame from "./CreateFrame";
+import Glasses from "./Glasses";
 
 class App extends Component {
   state = { activeItem: 'home' }
@@ -37,32 +38,23 @@ class App extends Component {
             <Menu.Item id="home" as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
               <Icon name="home" />Home
             </Menu.Item>
-
             
+            <Dropdown item  icon="newspaper" text='Browse '>
+              <Dropdown.Menu>
+              <Dropdown.Item as={Link} to={"/glasses"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
+              <Dropdown.Item as={Link} to={"/frames"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
+              </Dropdown.Menu>
+            </Dropdown>
+
+             <Dropdown item  icon="add" text='Donate '>
+              <Dropdown.Menu>
+              <Dropdown.Item as={Link} to={"/createGlass"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
+              <Dropdown.Item as={Link} to={"/createFrame"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
+              </Dropdown.Menu>
+            </Dropdown>
             
-            <div className="dropdown">
-              <Icon name="newspaper"/>Browse
-              <Menu.Item className="dropbtn" name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
-              {/* <Icon name="newspaper"/>Browse */}
-                <div className="dropdown-content">
-                  <a href="/glasses">Glasses</a>
-                  <a href="/frames">Frames</a>
-                </div> 
-              </Menu.Item>
-            </div>
+            <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
 
-            <div className="dropdown">
-            <Icon name="add"/>Donate
-              <Menu.Item className="dropbtn" name='donate' active={activeItem === 'donate'} onClick={this.handleItemClick}>
-              {/* <Icon name="add"/>Donate */}
-                <div className="dropdown-content">
-                  <a href="/createGlass">Glasses</a>
-                  <a href="/createFrame">Frames</a>
-                </div>
-              </Menu.Item>
-            </div>
-
-            <Menu.Item  id="logout" name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
             <Icon name="sign out"/>Logout
             </Menu.Item>
         </Menu>
