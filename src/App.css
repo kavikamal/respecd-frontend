@@ -2,6 +2,21 @@
   text-align: center;
 }
 
+#singleGlass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#singleGlassQuality {
+  margin-top: 50px;
+}
+
+#singleGlassMessage {
+  margin-top: 50px;
+}
+
 .donate {
   /* border: 1px solid green; */
   display: flex;
