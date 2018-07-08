@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header,
          Image,
@@ -51,14 +51,14 @@ class SingleGlass extends Component {
                           <td>R</td>
                           <td>{this.props.rightsphere}</td>
                           <td>{this.props.rightcylinder}</td>
-                          <td>{this.props.rightaxis}</td>
+                          <td>{this.props.rightaxis}°</td>
                           <td>{this.props.add}</td>
                         </tr>
                         <tr>
                           <th>L</th>
                           <td>{this.props.leftsphere}</td>
                           <td>{this.props.leftcylinder}</td>
-                          <td>{this.props.leftaxis}</td>
+                          <td>{this.props.leftaxis}°</td>
                           <td>{this.props.add}</td>
                         </tr>
 
@@ -89,7 +89,7 @@ class SingleGlass extends Component {
                     </Message>
 
                     <div>
-                        <Button>Update</Button>
+                        <Button as={Link} to={`/createGlass/${this.props.glassesid}`}>Update</Button>
                         <Button>Delete</Button>
                     </div>
 
@@ -121,7 +121,8 @@ const mapStateToProps = state => {
       condition: state.glassesReducer.condition,
       description: state.glassesReducer.description,
       city: state.glassesReducer.city,
-      pic: state.glassesReducer.pic
+      pic: state.glassesReducer.pic,
+      glassesid: state.glassesReducer.glassesid
     };
   };
 

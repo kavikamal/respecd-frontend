@@ -29,7 +29,8 @@ class GlassesListing extends Component {
       condition: "",
       description: "",
       city: "",
-      pic: ""
+      pic: "",
+      glassesid: ""
     }
   };
 
@@ -131,7 +132,8 @@ const mapStateToProps = state => {
     condition: state.glassesReducer.condition,
     description: state.glassesReducer.description,
     city: state.glassesReducer.city,
-    pic: state.glassesReducer.pic
+    pic: state.glassesReducer.pic,
+    glassesid: state.glassesReducer.glassesid
   };
 };
 

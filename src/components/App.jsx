@@ -10,11 +10,12 @@ import {
 } from "semantic-ui-react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import CreateGlass  from "./CreateGlass";
-import Frames from "./Frames";
-import CreateFrame from "./CreateFrame";
-import Glasses from "./Glasses";
-import SingleGlass from "./SingleGlass";
+import CreateGlass  from './CreateGlass';
+import Frames from './Frames';
+import CreateFrame from './CreateFrame';
+import Glasses from './Glasses';
+import SingleGlass from './SingleGlass';
+import UpdateGlass from './UpdateGlass';
 
 class App extends Component {
   state = { activeItem: 'home' }
@@ -65,6 +66,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses/:glassesid" component={SingleGlass}/>
+          <Route path="/createGlass/:glassesid" component={UpdateGlass} />
           <Route path="/glasses" component={Glasses} />
           <Route path="/createGlass" component={CreateGlass} />
           <Route path="/frames" component={Frames} />
