@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
-import backendurl from './config';
+import { backendurl } from './config';
 import {
   Header,
   Image,
@@ -9,13 +9,35 @@ import {
   Rating,
 } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
+//import getSingleGlass from './SingleGlass'
 
 class GlassesListing extends Component {
 
+  getSingleGlass = (glassId) => {
+    //const { token } = this.props;
+        let method = {
+            method: 'GET',
+            headers: {
+                //'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json' 
+            },
+            mode: 'cors'
+        }
+        fetch(backendurl+"/glasses/"+glassId, method)
+        .then(response => response.json())
+        .then(data => {
+          console.log("glasses fetch", data.data);
+         
+        })
+  }
+  
+
   render() {
-    console.log(this.props.glasses)
+    
+    // console.log(this.props.glasses)
     return (
       <React.Fragment>
+        {console.log(this.props.glasses)}
         {this.props.glasses.map((item, index) => (
           <Segment key={index}>
             <div className="listContainer">
@@ -34,7 +56,7 @@ class GlassesListing extends Component {
                 </div>
 
                 <div className="detailsBtn">
-                  <Button as={Link} to={`/${item.glassesid}`}>See More Details</Button>
+                  <Button onClick={(evt)=>this.getSingleGlass(item.glassesid)}>See More Details</Button>
                 </div>
                 <div className="prescription">
                   <table border="1" cellSpacing="0" cellPadding="2" className="rx">
