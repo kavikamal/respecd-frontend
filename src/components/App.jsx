@@ -14,6 +14,7 @@ import CreateGlass  from "./CreateGlass";
 import Frames from "./Frames";
 import CreateFrame from "./CreateFrame";
 import Glasses from "./Glasses";
+import SingleGlass from "./SingleGlass";
 
 class App extends Component {
   state = { activeItem: 'home' }
@@ -24,6 +25,9 @@ class App extends Component {
     this.props.history.push("/")
     this.setState({ activeItem: "home" })
   }
+
+  
+
   render() {
     const { activeItem } = this.state
     
@@ -60,6 +64,7 @@ class App extends Component {
        
         <Switch>
           <Route exact path="/" component={LoginRegister} />
+          <Route path="/glasses/:glassesid" component={SingleGlass}/>
           <Route path="/glasses" component={Glasses} />
           <Route path="/createGlass" component={CreateGlass} />
           <Route path="/frames" component={Frames} />
