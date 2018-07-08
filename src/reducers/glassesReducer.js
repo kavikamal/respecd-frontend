@@ -1,4 +1,4 @@
-import { CREATE_GLASS, SINGLE } from '../actions/index.js'
+import { CREATE_GLASS, SINGLE, UPDATE } from '../actions/index.js'
 
 export const glassesState = {
     title: "",
@@ -47,6 +47,21 @@ export const glassesReducer = (state = glassesState, action) => {
             newState2.city = action.payload.location; 
             newState2.pic = action.payload.pic;
             return newState2;
+        case UPDATE:
+        let newState3 = {...state};
+        newState3.title = action.payload.title;
+        newState3.leftsphere = action.payload.leftsphere;
+        newState3.rightsphere = action.payload.rightsphere;
+        newState3.leftcylinder = action.payload.leftcylinder;
+        newState3.rightcylinder = action.payload.rightcylinder;
+        newState3.leftaxis = action.payload.leftaxis;
+        newState3.rightaxis = action.payload.rightaxis;
+        newState3.add = action.payload.add; 
+        newState3.condition = action.payload.rating; 
+        newState3.description = action.payload.description; 
+        newState3.city = action.payload.location; 
+        newState3.pic = action.payload.pic;
+        return newState3;
         default: 
             return state;
     }
