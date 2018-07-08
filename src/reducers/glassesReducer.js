@@ -44,7 +44,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState2.add = action.payload.add; 
             newState2.condition = action.payload.rating; 
             newState2.description = action.payload.description; 
-            newState2.city = action.payload.city; 
+            newState2.city = action.payload.location; 
             newState2.pic = action.payload.pic;
             return newState2;
         default: 
