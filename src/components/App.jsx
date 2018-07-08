@@ -33,7 +33,7 @@ class App extends Component {
         <Image src={banner} fluid />
         </div>
 
-        <div id="menuDiv">
+      
         <Menu size="huge" color="teal" widths={4} pointing secondary>
             <Menu.Item id="home" as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
               <Icon name="home" />Home
@@ -43,7 +43,7 @@ class App extends Component {
               <Dropdown.Menu>
               <Dropdown.Item as={Link} to={"/glasses"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
               <Dropdown.Item as={Link} to={"/frames"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
-              </Dropdown.Menu>
+              </Dropdown.Menu>  
             </Dropdown>
 
              <Dropdown item  icon="add" text='Donate '>
@@ -52,13 +52,12 @@ class App extends Component {
               <Dropdown.Item as={Link} to={"/createFrame"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
               </Dropdown.Menu>
             </Dropdown>
-            
-            <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
 
+            <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
             <Icon name="sign out"/>Logout
             </Menu.Item>
         </Menu>
-        </div>
+       
         <Switch>
           <Route exact path="/" component={LoginRegister} />
           <Route path="/glasses" component={Glasses} />
