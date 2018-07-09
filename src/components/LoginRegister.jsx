@@ -8,8 +8,11 @@ import {
   Segment
 } from "semantic-ui-react";
 import {backendurl,AUTH_USER,UNAUTH_USER} from './config';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { token } from '../actions/glassesAction.js'
 
-export default class LoginRegister extends Component {
+class LoginRegister extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,6 +77,7 @@ export default class LoginRegister extends Component {
     fetch(backendurl+"/login", postOptions)
     .then(response => response.json())
     .then(data => {
+      this.props.dispatch(token(data))
       console.log(data)
     //   if (data.auth) {
     //     dispatch({ type: AUTH_USER,
@@ -198,3 +202,11 @@ export default class LoginRegister extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    token: state.glassesReducer.token
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(LoginRegister));

@@ -21,17 +21,18 @@ class CreateGlass extends Component {
   state = {
     glassesObject: {
       title: "",
-      leftsphere: "",
-      rightsphere: "",
-      leftcylinder: "",
-      rightcylinder: "",
-      leftaxis: "",
-      rightaxis: "",
-      add: "",
-      condition: "",
+      leftsphere: 0,
+      rightsphere: 0,
+      leftcylinder: 0,
+      rightcylinder: 0,
+      leftaxis: 0,
+      rightaxis: 0,
+      add: 0,
+      condition: 0,
       description: "",
       city: "",
-      pic: ""
+      pic: "",
+      token: ""
     }
   };
 
@@ -46,73 +47,45 @@ class CreateGlass extends Component {
   };
 
   imageChange = evt => {
-    this.glassesObject.image = evt.target.files[0];
+    this.glassesObject.pic = evt.target.files[0];
     console.log(this.glassesObject);
   };
 
-  createGlass = () => {
-    this.props.dispatch(glassesCreate(this.state.glassesObject));
+  createGlass = (evt) => {
+    evt.preventDefault();
     fetch(backendurl+"/glasses",
       {
         method: "POST",
         mode: "cors",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + this.props.token 
         },
         body: JSON.stringify({
-          title: this.props.title,
-          leftsphere: this.props.leftsphere,
-          rightsphere: this.props.rightsphere,
-          leftcylinder: this.props.leftcylinder,
-          rightcylinder: this.props.rightcylinder,
-          rightaxis: this.props.rightaxis,
-          leftaxis: this.props.leftaxis,
-          add: this.props.add,
-          rating: this.props.condition,
-          description: this.props.description,
-          location: this.props.city,
-          image: this.props.image,
-          userid: 1
+          title: this.state.glassesObject.title,
+          leftsphere: this.state.glassesObject.leftsphere,
+          rightsphere: this.state.glassesObject.rightsphere,
+          leftcylinder: this.state.glassesObject.leftcylinder,
+          rightcylinder: this.state.glassesObject.rightcylinder,
+          rightaxis: this.state.glassesObject.rightaxis,
+          leftaxis: this.state.glassesObject.leftaxis,
+          add: this.state.glassesObject.add,
+          rating: this.state.glassesObject.condition,
+          description: this.state.glassesObject.description,
+          location: this.state.glassesObject.city,
+          pic: this.state.glassesObject.pic,
+          userid: this.props.userid
         })
       }
     );
+    this.props.dispatch(glassesCreate(this.state.glassesObject));
   };
-
-  // listingSubmit = evt => {
-  //   evt.preventDefault();
-
-
-  //   fetch(backendurl+"/glasses",
-  //     {
-  //       method: "POST",
-  //       mode: "cors",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify({
-  //         title: this.props.title,
-  //         leftsphere: this.props.leftsphere,
-  //         rightsphere: this.props.rightsphere,
-  //         leftcylinder: this.props.leftcylinder,
-  //         rightcylinder: this.props.rightcylinder,
-  //         rightaxis: this.props.rightaxis,
-  //         leftaxis: this.props.leftaxis,
-  //         add: this.props.add,
-  //         rating: this.props.condition,
-  //         description: this.props.description,
-  //         location: this.props.city,
-  //         image: this.props.image,
-  //         userid: 1
-  //       })
-  //     }
-  //   );
-  // };
 
   render() {
     return (
       <React.Fragment>
         <Form
-          action= {"/glasses"} /*"https://re-specd-backend.herokuapp.com/glasses"*/
+          action= {backendurl+"/glasses"} /*"https://re-specd-backend.herokuapp.com/glasses"*/
           method="POST"
           encType="multipart/form-data"
         >
@@ -1224,8 +1197,8 @@ class CreateGlass extends Component {
 
               <div className="picContainer">
                 <Segment>
-                  <div className="description" name="description">
-                    Description <Input onChange={this.handleChange} />
+                  <div className="description">
+                    Description <Input name="description" onChange={this.handleChange} />
                   </div>
                 </Segment>
                 <Segment>
@@ -1274,7 +1247,9 @@ const mapStateToProps = state => {
     condition: state.glassesReducer.condition,
     description: state.glassesReducer.description,
     city: state.glassesReducer.city,
-    pic: state.glassesReducer.pic
+    pic: state.glassesReducer.pic,
+    token: state.glassesReducer.token,
+    userid: 1
   };
 };
 

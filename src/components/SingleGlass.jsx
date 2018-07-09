@@ -24,7 +24,8 @@ class SingleGlass extends Component {
           condition: "",
           description: "",
           city: "",
-          pic: ""
+          pic: "",
+          token: ""
         }
       };
     
@@ -122,7 +123,8 @@ const mapStateToProps = state => {
       description: state.glassesReducer.description,
       city: state.glassesReducer.city,
       pic: state.glassesReducer.pic,
-      glassesid: state.glassesReducer.glassesid
+      glassesid: state.glassesReducer.glassesid,
+      token: state.glassesReducer.token
     };
   };
 
