@@ -1253,8 +1253,8 @@ const mapStateToProps = state => {
     description: state.glassesReducer.description,
     city: state.glassesReducer.city,
     pic: state.glassesReducer.pic,
-    token: state.glassesReducer.token,
-    userid: 1
+    token: state.userReducer.token,
+    userid: state.userReducer.userid
   };
 };
 
