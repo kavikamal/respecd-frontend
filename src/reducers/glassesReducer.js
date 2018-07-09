@@ -28,7 +28,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState.leftaxis = action.payload.leftaxis;
             newState.rightaxis = action.payload.rightaxis;
             newState.add = action.payload.add; 
-            newState.condition = action.payload.condition.rating; 
+            newState.condition = action.payload.condition; 
             newState.description = action.payload.description; 
             newState.city = action.payload.city; 
             newState.pic = action.payload.pic;
@@ -44,7 +44,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState2.leftaxis = action.payload.leftaxis;
             newState2.rightaxis = action.payload.rightaxis;
             newState2.add = action.payload.add; 
-            newState2.condition = action.payload.rating; 
+            newState2.condition = action.payload.condition; 
             newState2.description = action.payload.description; 
             newState2.city = action.payload.location; 
             newState2.pic = action.payload.pic;
@@ -60,7 +60,7 @@ export const glassesReducer = (state = glassesState, action) => {
         newState3.leftaxis = action.payload.leftaxis;
         newState3.rightaxis = action.payload.rightaxis;
         newState3.add = action.payload.add; 
-        newState3.condition = action.payload.rating; 
+        newState3.condition = action.payload.condition; 
         newState3.description = action.payload.description; 
         newState3.city = action.payload.location; 
         newState3.pic = action.payload.pic;

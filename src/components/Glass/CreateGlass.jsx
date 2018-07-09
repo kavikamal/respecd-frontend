@@ -53,6 +53,7 @@ class CreateGlass extends Component {
     this.setState({
       glassesObject: glassesObject
     })
+    console.log(this.state)
 }
 
   createGlass = (evt) => {
@@ -74,7 +75,7 @@ class CreateGlass extends Component {
           rightaxis: this.state.glassesObject.rightaxis,
           leftaxis: this.state.glassesObject.leftaxis,
           add: this.state.glassesObject.add,
-          rating: this.state.glassesObject.condition,
+          condition: this.state.glassesObject.condition,
           description: this.state.glassesObject.description,
           location: this.state.glassesObject.city,
           pic: this.state.glassesObject.pic,
@@ -113,7 +114,7 @@ class CreateGlass extends Component {
                   <br />
                   L Sphere<select
                     onChange={this.handleChange}
-                    default={0.0}
+                    defaultValue="0.00"
                     className="rxLeft1"
                     name="leftsphere"
                   >
@@ -197,7 +198,7 @@ class CreateGlass extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option selected="selected" value="0.00">
+                    <option>
                       0.00
                     </option>
                     <option value="+0.25">+0.25</option>
@@ -285,6 +286,7 @@ class CreateGlass extends Component {
                     onChange={this.handleChange}
                     className="rxLeft2"
                     name="rightsphere"
+                    defaultValue="0.00"
                   >
                     <option value="-20.00">-20.00</option>
                     <option value="-19.75">-19.75</option>
@@ -366,7 +368,7 @@ class CreateGlass extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option selected="selected" value="0.00">
+                    <option>
                       0.00
                     </option>
                     <option value="+0.25">+0.25</option>
@@ -454,6 +456,7 @@ class CreateGlass extends Component {
                     onChange={this.handleChange}
                     id="leftCyl"
                     name="leftcylinder"
+                    defaultValue="0.00"
                   >
                     <option value="-20.00">-20.00</option>
                     <option value="-19.75">-19.75</option>
@@ -535,7 +538,7 @@ class CreateGlass extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option selected="selected" value="0.00">
+                    <option>
                       0.00
                     </option>
                     <option value="+0.25">+0.25</option>
@@ -623,6 +626,7 @@ class CreateGlass extends Component {
                     onChange={this.handleChange}
                     id="rightCyl"
                     name="rightcylinder"
+                    defaultValue="0.00"
                   >
                     <option value="-20.00">-20.00</option>
                     <option value="-19.75">-19.75</option>
@@ -704,7 +708,7 @@ class CreateGlass extends Component {
                     <option value="-0.75">-0.75</option>
                     <option value="-0.50">-0.50</option>
                     <option value="-0.25">-0.25</option>
-                    <option selected="selected" value="0.00">
+                    <option>
                       0.00
                     </option>
                     <option value="+0.25">+0.25</option>
@@ -793,6 +797,7 @@ class CreateGlass extends Component {
                     onChange={this.handleChange}
                     id="axis"
                     name="leftaxis"
+                    defaultValue="0"
                   >
                     <option value="0">0°</option>
                     <option value="1">1°</option>
@@ -981,6 +986,7 @@ class CreateGlass extends Component {
                     onChange={this.handleChange}
                     id="axis"
                     name="rightaxis"
+                    defaultValue="0.00"
                   >
                     <option value="0">0°</option>
                     <option value="1">1°</option>
@@ -1165,7 +1171,7 @@ class CreateGlass extends Component {
                     <option value="180">180°</option>
                   </select>
                   Add{" "}
-                  <select onChange={this.handleChange} name="add">
+                  <select onChange={this.handleChange} name="add" defaultValue="0.00">
                     <option value="0.00">0.00</option>
                     <option value="+0.25">+0.25</option>
                     <option value="+0.50">+0.50</option>
