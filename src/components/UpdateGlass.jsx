@@ -29,7 +29,8 @@ class UpdateGlass extends Component {
       condition: "",
       description: "",
       city: "",
-      pic: ""
+      pic: "",
+      token: ""
     }
   };
 
@@ -70,7 +71,8 @@ class UpdateGlass extends Component {
           description: this.props.description,
           location: this.props.city,
           image: this.props.image,
-          userid: 1
+          userid: 1,
+          token: this.props.token
         })
       }
     );
@@ -1270,7 +1272,8 @@ const mapStateToProps = state => {
     condition: state.glassesReducer.condition,
     description: state.glassesReducer.description,
     city: state.glassesReducer.city,
-    pic: state.glassesReducer.pic
+    pic: state.glassesReducer.pic,
+    token: state.glassesReducer.token
   };
 };
 
