@@ -20,7 +20,7 @@ getSingleFrame = (frameId) => {
       let method = {
           method: 'GET',
           headers: {
-              'Authorization': 'Bearer ' + token,
+              // 'Authorization': 'Bearer ' + token,
               'Content-Type': 'application/json' 
           },
           mode: 'cors'
@@ -34,6 +34,7 @@ getSingleFrame = (frameId) => {
 }
 
   render() {
+    console.log(this.props.frames);
     return (
       <React.Fragment>
         {this.props.frames.map((item, index) => (
@@ -47,13 +48,13 @@ getSingleFrame = (frameId) => {
                 <div className="quality">
                   <Rating
                     icon="star"
-                    rating={item.rating}
+                    rating={item.condition}
                     maxRating={4}
                     disabled
                   />
                 </div>
                 <div className="detailsBtn">
-                <Button onClick={(evt)=>this.getSingleFrame(item.framesid)} as={Link} to={`/frames/${item.framesid}`}>See More Details</Button>
+                <Button onClick={(evt)=>this.getSingleFrame(item.frameid)} as={Link} to={`/frames/${item.frameid}`}>See More Details</Button>
                 </div>
 
               </div>

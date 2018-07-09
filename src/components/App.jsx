@@ -12,6 +12,8 @@ import CreateFrame from "./Frame/CreateFrame";
 import Glasses from "./Glass/Glasses";
 import User from "./User/User";
 import NavBar from "./NavBar";
+import SingleFrame from './Frame/SingleFrame';
+
 
 class App extends Component {
   
@@ -28,6 +30,7 @@ class App extends Component {
           <Route path="/createGlass" component={CreateGlass} />
           <Route path="/updateFrame/:glassesid" component={UpdateGlass} />
           <Route path="/createFrame" component={CreateFrame} />
+          <Route path="/frames/:frameid" component={SingleFrame} />
           <Route path="/frames" component={Frames} />
           <Route path="/user" component={User} />
         </Switch>
