@@ -14,8 +14,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { glassesCreate } from "../actions/glassesAction.js";
 
-// method="POST"
-//           encType="multipart/form-data"
+
 
 class CreateGlass extends Component {
   state = {
@@ -32,7 +31,6 @@ class CreateGlass extends Component {
       description: "",
       city: "",
       pic: "",
-      token: ""
     }
   };
 
@@ -50,6 +48,14 @@ class CreateGlass extends Component {
     this.glassesObject.pic = evt.target.files[0];
     console.log(this.glassesObject);
   };
+
+  qualityChange = (evt, { rating }) => {
+    const glassesObject = this.state.glassesObject;
+    glassesObject.condition = rating;
+    this.setState({
+      glassesObject: glassesObject
+    })
+}
 
   createGlass = (evt) => {
     evt.preventDefault();
@@ -79,6 +85,7 @@ class CreateGlass extends Component {
       }
     );
     this.props.dispatch(glassesCreate(this.state.glassesObject));
+    this.props.history.push("/glasses");
   };
 
   render() {
@@ -1185,7 +1192,7 @@ class CreateGlass extends Component {
                   <div>
                     Condition{" "}
                     <Rating
-                      onRate={this.handleChange}
+                      onRate={this.qualityChange}
                       name="condition"
                       icon="star"
                       defaultRating={0}

@@ -79,17 +79,6 @@ class LoginRegister extends Component {
     .then(data => {
       this.props.dispatch(token(data))
       console.log(data)
-    //   if (data.auth) {
-    //     dispatch({ type: AUTH_USER,
-    //             username: credentials.username,userid:data.id,
-    //             token: data.token  });
-    //     this.props.history.push("/glasses")        
-
-    // } else {
-    //     dispatch({ type: UNAUTH_USER,
-    //         message: "Login Unsuccessful" });
-    //     alert("Incorrect Username or Password")    
-    // }
     })
     .catch(err=> console.log(err))
   }

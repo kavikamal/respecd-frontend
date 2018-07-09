@@ -19,14 +19,14 @@ class GlassesListing extends Component {
   state = {
     glassObject: {
       title: "",
-      leftsphere: "",
-      rightsphere: "",
-      leftcylinder: "",
-      rightcylinder: "",
-      leftaxis: "",
-      rightaxis: "",
-      add: "",
-      condition: "",
+      leftsphere: 0,
+      rightsphere: 0,
+      leftcylinder: 0,
+      rightcylinder: 0,
+      leftaxis: 0,
+      rightaxis: 0,
+      add: 0,
+      condition: 0,
       description: "",
       city: "",
       pic: "",
@@ -94,14 +94,14 @@ class GlassesListing extends Component {
                         <td>R</td>
                         <td>{item.rightsphere}</td>
                         <td>{item.rightcylinder}</td>
-                        <td>{item.rightaxis}</td>
+                        <td>{item.rightaxis}°</td>
                         <td>{item.add}</td>
                       </tr>
                       <tr>
                         <th>L</th>
                         <td>{item.leftsphere}</td>
                         <td>{item.leftcylinder}</td>
-                        <td>{item.leftaxis}</td>
+                        <td>{item.leftaxis}°</td>
                         <td>{item.add}</td>
                       </tr>
 
