@@ -1,4 +1,4 @@
-import { CREATE_GLASS, SINGLE, UPDATE, TOKEN } from '../actions/index.js'
+import { CREATE_GLASS, SINGLE, UPDATE, } from '../actions/index.js'
 
 export const glassesState = {
     title: "",
@@ -13,7 +13,6 @@ export const glassesState = {
     description: "",
     city: "",
     pic: "",
-    token: ""
 }
 
 export const glassesReducer = (state = glassesState, action) => {
@@ -32,7 +31,6 @@ export const glassesReducer = (state = glassesState, action) => {
             newState.description = action.payload.description; 
             newState.city = action.payload.city; 
             newState.pic = action.payload.pic;
-            // newState.token = action.payload.token;
             return newState;
         case SINGLE:
             let newState2 = {...state};
@@ -48,7 +46,6 @@ export const glassesReducer = (state = glassesState, action) => {
             newState2.description = action.payload.description; 
             newState2.city = action.payload.location; 
             newState2.pic = action.payload.pic;
-            // newState2.token = action.payload.token;
             return newState2;
         case UPDATE:
         let newState3 = {...state};
@@ -64,12 +61,7 @@ export const glassesReducer = (state = glassesState, action) => {
         newState3.description = action.payload.description; 
         newState3.city = action.payload.location; 
         newState3.pic = action.payload.pic;
-        // newState3.token = action.payload.token;
         return newState3;
-    case TOKEN: 
-        let newState4 = {...state};
-        newState4.token = action.payload.token;
-        return newState4;
         default: 
             return state;
     }
