@@ -15,23 +15,23 @@ import { withRouter } from 'react-router-dom';
 
 class GlassesListing extends Component {
 
-  state = {
-    glassObject: {
-      title: "",
-      leftsphere: 0,
-      rightsphere: 0,
-      leftcylinder: 0,
-      rightcylinder: 0,
-      leftaxis: 0,
-      rightaxis: 0,
-      add: 0,
-      condition: 0,
-      description: "",
-      city: "",
-      pic: "",
-      glassesid: ""
-    }
-  };
+  // state = {
+  //   glassObject: {
+  //     title: "",
+  //     leftsphere: 0,
+  //     rightsphere: 0,
+  //     leftcylinder: 0,
+  //     rightcylinder: 0,
+  //     leftaxis: 0,
+  //     rightaxis: 0,
+  //     add: 0,
+  //     condition: 0,
+  //     description: "",
+  //     city: "",
+  //     pic: "",
+  //     glassesid: ""
+  //   }
+  // };
 
   getSingleGlass = (glassId) => {
     //const { token } = this.props;
@@ -70,7 +70,7 @@ class GlassesListing extends Component {
                 <div className="quality">
                   <Rating
                     icon="star"
-                    rating={item.rating}
+                    rating={item.condition}
                     maxRating={4}
                     disabled
                   />
