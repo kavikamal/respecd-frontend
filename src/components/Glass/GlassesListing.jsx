@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "../App.css";
-import { backendurl } from './config';
+import '../../App.css';
+import { backendurl } from '../../config';
 import {
   Header,
   Image,
@@ -9,9 +9,29 @@ import {
   Rating,
 } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
-//import getSingleGlass from './SingleGlass'
+import { glassSingle } from '../../actions/glassesAction';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class GlassesListing extends Component {
+
+  state = {
+    glassObject: {
+      title: "",
+      leftsphere: 0,
+      rightsphere: 0,
+      leftcylinder: 0,
+      rightcylinder: 0,
+      leftaxis: 0,
+      rightaxis: 0,
+      add: 0,
+      condition: 0,
+      description: "",
+      city: "",
+      pic: "",
+      glassesid: ""
+    }
+  };
 
   getSingleGlass = (glassId) => {
     //const { token } = this.props;
@@ -26,9 +46,11 @@ class GlassesListing extends Component {
         fetch(backendurl+"/glasses/"+glassId, method)
         .then(response => response.json())
         .then(data => {
-          console.log("glasses fetch", data.data);
-         
+          this.props.dispatch(glassSingle(data.data[0]))
+          console.log("glasses fetch", data.data[0]);
         })
+        // .then()
+
   }
   
 
@@ -37,7 +59,6 @@ class GlassesListing extends Component {
     // console.log(this.props.glasses)
     return (
       <React.Fragment>
-        {console.log(this.props.glasses)}
         {this.props.glasses.map((item, index) => (
           <Segment key={index}>
             <div className="listContainer">
@@ -54,9 +75,8 @@ class GlassesListing extends Component {
                     disabled
                   />
                 </div>
-
                 <div className="detailsBtn">
-                  <Button onClick={(evt)=>this.getSingleGlass(item.glassesid)}>See More Details</Button>
+                  <Button onClick={(evt)=>this.getSingleGlass(item.glassesid)} as={Link} to={`/glasses/${item.glassesid}`}>See More Details</Button>
                 </div>
                 <div className="prescription">
                   <table border="1" cellSpacing="0" cellPadding="2" className="rx">
@@ -72,17 +92,16 @@ class GlassesListing extends Component {
                         <td>R</td>
                         <td>{item.rightsphere}</td>
                         <td>{item.rightcylinder}</td>
-                        <td>{item.rightaxis}</td>
+                        <td>{item.rightaxis}°</td>
                         <td>{item.add}</td>
                       </tr>
                       <tr>
                         <th>L</th>
                         <td>{item.leftsphere}</td>
                         <td>{item.leftcylinder}</td>
-                        <td>{item.leftaxis}</td>
+                        <td>{item.leftaxis}°</td>
                         <td>{item.add}</td>
                       </tr>
-
                     </tbody>
                   </table>
                 </div>
@@ -95,4 +114,24 @@ class GlassesListing extends Component {
   }
 }
 
-export default GlassesListing;
+
+
+const mapStateToProps = state => {
+  return {
+    title: state.glassesReducer.title,
+    rightsphere: state.glassesReducer.rightsphere,
+    leftsphere: state.glassesReducer.leftsphere,
+    rightcylinder: state.glassesReducer.rightcylinder,
+    leftcylinder: state.glassesReducer.leftcylinder,
+    rightaxis: state.glassesReducer.rightaxis,
+    leftaxis: state.glassesReducer.leftaxis,
+    add: state.glassesReducer.add,
+    condition: state.glassesReducer.condition,
+    description: state.glassesReducer.description,
+    city: state.glassesReducer.city,
+    pic: state.glassesReducer.pic,
+    glassesid: state.glassesReducer.glassesid
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(GlassesListing));
