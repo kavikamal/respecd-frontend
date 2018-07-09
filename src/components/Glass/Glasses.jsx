@@ -18,7 +18,7 @@ class Glasses extends Component {
         let method = {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer ' + token,
+                // 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json' 
             },
             mode: 'cors'

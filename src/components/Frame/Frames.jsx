@@ -13,7 +13,7 @@ class Frames extends Component {
         let method = {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer ' + token,
+                // 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json' 
             },
             mode: 'cors'
@@ -23,6 +23,7 @@ class Frames extends Component {
         .then(data => {      
           console.log("Frames fetch", data.data);
           this.setState({ frames: data.data });
+          
         })  
         
       };
