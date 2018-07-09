@@ -21,7 +21,7 @@ class CreateFrame extends Component {
       condition: "",
       description: "",
       location: "",
-      pic: ""
+      frameimage: ""
     }
   };
 
@@ -43,7 +43,12 @@ class CreateFrame extends Component {
   };
 
   imageChange = evt => {
-    this.framesObject.image = evt.target.files[0];
+    console.log(evt.target.files[0])
+    const framesObject = this.state.framesObject;
+    framesObject.frameimage = evt.target.files[0];
+      this.setState({
+        framesObject: framesObject
+      });  
   };
 
 
@@ -62,7 +67,7 @@ class CreateFrame extends Component {
               rating: this.state.framesObject.condition,
               description: this.state.framesObject.description,
               location: this.state.framesObject.location,
-              pic: this.state.framesObject.image,
+              frameimage: this.state.framesObject.frameimage,
               userid: this.props.userid
             })
         }
@@ -127,10 +132,10 @@ class CreateFrame extends Component {
                   <Segment>
                     Upload Images{" "}
                     <Form.Input
-                      onChange={this.handleChange}
+                      onChange={this.imageChange}
                       method="post"
                       type="file"
-                      name="pic"
+                      name="frameimage"
                       accept="image/*"
                     />
                   </Segment>
@@ -158,7 +163,7 @@ const mapStateToProps = state => {
     condition: state.framesReducer.condition,
     description: state.framesReducer.description,
     city: state.framesReducer.city,
-    pic: state.framesReducer.pic,
+    frameimage: state.framesReducer.frameimage,
     userid:state.userReducer.userid
   };
 };
