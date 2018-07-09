@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "../App.css";
-import { backendurl } from './config';
+import "../../App.css";
+import { backendurl } from '../../config';
 // import banner from "../images/banner.png";
 import {
   Header,
@@ -12,7 +12,7 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { createFrame } from "../actions/framesAction.js";
+import { createFrame } from "../../actions/framesAction.js";
 
 class CreateFrame extends Component {
   state = {
@@ -20,7 +20,7 @@ class CreateFrame extends Component {
       title: "",
       condition: "",
       description: "",
-      city: "",
+      location: "",
       pic: ""
     }
   };
@@ -32,38 +32,49 @@ class CreateFrame extends Component {
     this.setState({
       framesObject: framesObject
     });
-    console.log(this.state);
+  } 
+    handleRating = (event,{rating}) => {
+      
+      const framesObject = this.state.framesObject;
+      framesObject.condition= rating;
+      this.setState({
+        framesObject: framesObject
+      });  
   };
 
   imageChange = evt => {
     this.framesObject.image = evt.target.files[0];
-    console.log(this.framesObject);
   };
 
-  createFrame = () => {
-    this.props.dispatch(createFrame(this.state.framesObject));
-  };
 
-  listingSubmit = evt => {
+  createFrame = (evt) => {
+    const { token } = this.props;
     evt.preventDefault();
-    fetch(backendurl+"/frames",
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          title: this.props.title,
-          rating: this.props.condition,
-          description: this.props.description,
-          location: this.props.city,
-          image: this.props.image,
-          userid: 1
+        let method = {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json' 
+            },
+            mode: 'cors',
+            body: JSON.stringify({
+              title: this.state.framesObject.title,
+              rating: this.state.framesObject.condition,
+              description: this.state.framesObject.description,
+              location: this.state.framesObject.location,
+              pic: this.state.framesObject.image,
+              userid: this.props.userid
+            })
+        }
+        fetch(backendurl+"/frames", method)
+        .then(response => response.json())
+        .then(data => {
+          //this.props.dispatch(createFrame(data.data))
+          console.log("Create frame fetch", data.data);
         })
-      }
-    );
-  };
+  }
+
+  
 
   render() {
     return (
@@ -85,15 +96,13 @@ class CreateFrame extends Component {
                 <Segment>
                   Listing Title{" "}
                   <Input onChange={this.handleChange} name="title" />
-                </Segment>
-
-                
+                </Segment>  
 
                 <Segment>
                   <div>
                     Condition{" "}
                     <Rating
-                      onRate={this.handleChange}
+                      onRate={this.handleRating}
                       name="condition"
                       icon="star"
                       defaultRating={0}
@@ -106,12 +115,12 @@ class CreateFrame extends Component {
               <div className="picContainer">
                 <Segment>
                   <div className="description" name="description">
-                    Description <Input onChange={this.handleChange} />
+                    Description <Input onChange={this.handleChange} name="description"/>
                   </div>
                 </Segment>
                 <Segment>
                   <div>
-                    Location <Input onChange={this.handleChange} name="city" />
+                    Location <Input onChange={this.handleChange} name="location" />
                   </div>
                 </Segment>
                 <div className="picture">
@@ -144,11 +153,13 @@ class CreateFrame extends Component {
 
 const mapStateToProps = state => {
   return {
+    token:state.userReducer.token,
     title: state.framesReducer.title,
     condition: state.framesReducer.condition,
     description: state.framesReducer.description,
     city: state.framesReducer.city,
-    pic: state.framesReducer.pic
+    pic: state.framesReducer.pic,
+    userid:state.userReducer.userid
   };
 };
 

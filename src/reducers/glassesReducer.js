@@ -1,18 +1,19 @@
-import { CREATE_GLASS } from '../actions/index.js'
+import { CREATE_GLASS, SINGLE_GLASS, UPDATE_GLASS } from '../config'
 
 export const glassesState = {
     title: "",
-    leftsphere: "",
-    rightsphere: "",
-    leftcylinder: "",
-    rightcylinder: "",
-    leftaxis: "",
-    rightaxis: "",
-    add: "",
-    condition: "",
+    leftsphere: 0,
+    rightsphere: 0,
+    leftcylinder: 0,
+    rightcylinder: 0,
+    leftaxis: 0,
+    rightaxis: 0,
+    add: 0,
+    condition: 0,
     description: "",
     city: "",
-    pic: ""
+    pic: "",
+    token: ""
 }
 
 export const glassesReducer = (state = glassesState, action) => {
@@ -31,8 +32,42 @@ export const glassesReducer = (state = glassesState, action) => {
             newState.description = action.payload.description; 
             newState.city = action.payload.city; 
             newState.pic = action.payload.pic;
+            // newState.token = action.payload.token;
             return newState;
-        default: 
+        case SINGLE_GLASS:
+            let newState2 = {...state};
+            newState2.title = action.payload.title;
+            newState2.leftsphere = action.payload.leftsphere;
+            newState2.rightsphere = action.payload.rightsphere;
+            newState2.leftcylinder = action.payload.leftcylinder;
+            newState2.rightcylinder = action.payload.rightcylinder;
+            newState2.leftaxis = action.payload.leftaxis;
+            newState2.rightaxis = action.payload.rightaxis;
+            newState2.add = action.payload.add; 
+            newState2.condition = action.payload.rating; 
+            newState2.description = action.payload.description; 
+            newState2.city = action.payload.location; 
+            newState2.pic = action.payload.pic;
+            // newState2.token = action.payload.token;
+            return newState2;
+        case UPDATE_GLASS:
+        let newState3 = {...state};
+        newState3.title = action.payload.title;
+        newState3.leftsphere = action.payload.leftsphere;
+        newState3.rightsphere = action.payload.rightsphere;
+        newState3.leftcylinder = action.payload.leftcylinder;
+        newState3.rightcylinder = action.payload.rightcylinder;
+        newState3.leftaxis = action.payload.leftaxis;
+        newState3.rightaxis = action.payload.rightaxis;
+        newState3.add = action.payload.add; 
+        newState3.condition = action.payload.rating; 
+        newState3.description = action.payload.description; 
+        newState3.city = action.payload.location; 
+        newState3.pic = action.payload.pic;
+        // newState3.token = action.payload.token;
+        return newState3;
+   
+    default: 
             return state;
     }
     

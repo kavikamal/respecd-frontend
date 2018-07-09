@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "../App.css";
-import { backendurl } from './config';
-// import banner from "../images/banner.png";
+import "../../App.css";
+import { backendurl } from '../../config';
+
 import {
   Header,
   Input,
@@ -12,50 +12,48 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { glassesCreate } from "../actions/glassesAction.js";
+import { glassesUpdate } from "../../actions/glassesAction";
 
-class CreateGlass extends Component {
+
+class UpdateGlass extends Component {
   state = {
-    glassesObject: {
+    glassesUpdateObject: {
       title: "",
-      leftsphere: "",
-      rightsphere: "",
-      leftcylinder: "",
-      rightcylinder: "",
-      leftaxis: "",
-      rightaxis: "",
-      add: "",
-      condition: "",
+      leftsphere: 0,
+      rightsphere: 0,
+      leftcylinder: 0,
+      rightcylinder: 0,
+      leftaxis: 0,
+      rightaxis: 0,
+      add: 0,
+      condition: 0,
       description: "",
       city: "",
-      pic: ""
+      pic: "",
+      token: ""
     }
   };
 
-  handleChange = event => {
+  handleChangeUpdate = event => {
     const field = event.target.name;
-    const glassesObject = this.state.glassesObject;
-    glassesObject[field] = event.target.value;
+    const glassesUpdateObject = this.state.glassesUpdateObject;
+    glassesUpdateObject[field] = event.target.value;
     this.setState({
-      glassesObject: glassesObject
+      glassesUpdateObject: glassesUpdateObject
     });
     console.log(this.state);
   };
 
-  imageChange = evt => {
-    this.glassesObject.image = evt.target.files[0];
-    console.log(this.glassesObject);
+  imageChangeUpdate = evt => {
+    this.glassesUpdateObject.image = evt.target.files[0];
+    console.log(this.glassesUpdateObject);
   };
 
-  createGlass = () => {
-    this.props.dispatch(glassesCreate(this.state.glassesObject));
-  };
-
-  listingSubmit = evt => {
-    evt.preventDefault();
+  updateGlass = () => {
+    this.props.dispatch(glassesUpdate(this.state.glassesUpdateObject));
     fetch(backendurl+"/glasses",
       {
-        method: "POST",
+        method: "PUT",
         mode: "cors",
         headers: {
           "Content-Type": "application/json"
@@ -73,18 +71,47 @@ class CreateGlass extends Component {
           description: this.props.description,
           location: this.props.city,
           image: this.props.image,
-          userid: 1
+          userid: 1,
+          token: this.props.token
         })
       }
     );
   };
 
+//   listingSubmitUpdate = evt => {
+//     evt.preventDefault();
+//     fetch(backendurl+"/glasses",
+//       {
+//         method: "PUT",
+//         mode: "cors",
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({
+//           title: this.props.title,
+//           leftsphere: this.props.leftsphere,
+//           rightsphere: this.props.rightsphere,
+//           leftcylinder: this.props.leftcylinder,
+//           rightcylinder: this.props.rightcylinder,
+//           rightaxis: this.props.rightaxis,
+//           leftaxis: this.props.leftaxis,
+//           add: this.props.add,
+//           rating: this.props.condition,
+//           description: this.props.description,
+//           location: this.props.city,
+//           image: this.props.image,
+//           userid: 1
+//         })
+//       }
+//     );
+//   };
+
   render() {
     return (
       <React.Fragment>
         <Form
-          action= {backendurl +"/glasses"} /*"https://re-specd-backend.herokuapp.com/glasses"*/
-          method="POST"
+          action= {"/glasses"} /*"https://re-specd-backend.herokuapp.com/glasses"*/
+          method="PUT"
           encType="multipart/form-data"
         >
           <Container>
@@ -92,22 +119,22 @@ class CreateGlass extends Component {
               <div className="donate">
                 <Segment>
                   <Header as="h1">
-                    Have old glasses you'd like to donate? Create a Listing
+                    Update Your Glasses Listing
                   </Header>
                 </Segment>
 
                 <Segment>
                   Listing Title{" "}
-                  <Input onChange={this.handleChange} name="title" />
+                  <Input onChange={this.handleChangeUpdate} name="title" />
                 </Segment>
 
                 <Segment>
                   Prescription <br />
                   <br />
                   L Sphere<select
-                    onChange={this.handleChange}
+                    onChange={this.handleChangeUpdate}
                     default={0.0}
-                    id="rxLeft1"
+                    className="rxLeft1"
                     name="leftsphere"
                   >
                     <option value="-20.00">-20.00</option>
@@ -275,8 +302,8 @@ class CreateGlass extends Component {
                     <option value="+20.00">+20.00</option>
                   </select>
                   R Sphere<select
-                    onChange={this.handleChange}
-                    id="rxLeft2"
+                    onChange={this.handleChangeUpdate}
+                    className="rxLeft2"
                     name="rightsphere"
                   >
                     <option value="-20.00">-20.00</option>
@@ -444,8 +471,8 @@ class CreateGlass extends Component {
                     <option value="+20.00">+20.00</option>
                   </select>
                   L Cylinder<select
-                    onChange={this.handleChange}
-                    id="leftCyl"
+                    onChange={this.handleChangeUpdate}
+                    className="leftCyl"
                     name="leftcylinder"
                   >
                     <option value="-20.00">-20.00</option>
@@ -613,8 +640,8 @@ class CreateGlass extends Component {
                     <option value="+20.00">+20.00</option>
                   </select>
                   R Cylinder<select
-                    onChange={this.handleChange}
-                    id="rightCyl"
+                    onChange={this.handleChangeUpdate}
+                    className="rightCyl"
                     name="rightcylinder"
                   >
                     <option value="-20.00">-20.00</option>
@@ -783,8 +810,8 @@ class CreateGlass extends Component {
                   </select>
                   L Axis{" "}
                   <select
-                    onChange={this.handleChange}
-                    id="axis"
+                    onChange={this.handleChangeUpdate}
+                    className="axis"
                     name="leftaxis"
                   >
                     <option value="0">0°</option>
@@ -971,8 +998,8 @@ class CreateGlass extends Component {
                   </select>
                   R Axis{" "}
                   <select
-                    onChange={this.handleChange}
-                    id="axis"
+                    onChange={this.handleChangeUpdate}
+                    className="axis"
                     name="rightaxis"
                   >
                     <option value="0">0°</option>
@@ -1158,7 +1185,7 @@ class CreateGlass extends Component {
                     <option value="180">180°</option>
                   </select>
                   Add{" "}
-                  <select onChange={this.handleChange} name="add">
+                  <select onChange={this.handleChangeUpdate} name="add">
                     <option value="0.00">0.00</option>
                     <option value="+0.25">+0.25</option>
                     <option value="+0.50">+0.50</option>
@@ -1183,7 +1210,7 @@ class CreateGlass extends Component {
                   <div>
                     Condition{" "}
                     <Rating
-                      onRate={this.handleChange}
+                      onRate={this.handleChangeUpdate}
                       name="condition"
                       icon="star"
                       defaultRating={0}
@@ -1196,20 +1223,20 @@ class CreateGlass extends Component {
               <div className="picContainer">
                 <Segment>
                   <div className="description" name="description">
-                    Description <Input onChange={this.handleChange} />
+                    Description <Input onChange={this.handleChangeUpdate} />
                   </div>
                 </Segment>
                 <Segment>
                   <div>
-                    Location <Input onChange={this.handleChange} name="city" />
+                    Location <Input onChange={this.handleChangeUpdate} name="city" />
                   </div>
                 </Segment>
                 <div className="picture">
                   <Segment>
                     Upload Images{" "}
                     <Form.Input
-                      onChange={this.handleChange}
-                      method="post"
+                      onChange={this.handleChangeUpdate}
+                      method="put"
                       type="file"
                       name="pic"
                       accept="image/*"
@@ -1217,11 +1244,11 @@ class CreateGlass extends Component {
                   </Segment>
                 </div>
                 <Form.Button
-                  onClick={this.createGlass}
+                  onClick={this.updateGlass}
                   color="teal"
                   type="submit"
                 >
-                  Create Listing
+                  Update Listing
                 </Form.Button>
               </div>
             </div>
@@ -1245,8 +1272,9 @@ const mapStateToProps = state => {
     condition: state.glassesReducer.condition,
     description: state.glassesReducer.description,
     city: state.glassesReducer.city,
-    pic: state.glassesReducer.pic
+    pic: state.glassesReducer.pic,
+    token: state.glassesReducer.token
   };
 };
 
-export default withRouter(connect(mapStateToProps)(CreateGlass));
+export default withRouter(connect(mapStateToProps)(UpdateGlass));

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 import {
   Button,
   Form,
@@ -7,9 +9,10 @@ import {
   Header,
   Segment
 } from "semantic-ui-react";
-import {backendurl,AUTH_USER,UNAUTH_USER} from './config';
+import { backendurl } from '../../config';
+import { loginUser } from '../../actions/userAction';
 
-export default class LoginRegister extends Component {
+class LoginRegister extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,17 +78,14 @@ export default class LoginRegister extends Component {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-    //   if (data.auth) {
-    //     dispatch({ type: AUTH_USER,
-    //             username: credentials.username,userid:data.id,
-    //             token: data.token  });
-    //     this.props.history.push("/glasses")        
+      if (data.auth) {
+        this.props.dispatch(loginUser({token: data.token,user:data.user}));
+        this.props.history.push("/glasses")        
 
-    // } else {
-    //     dispatch({ type: UNAUTH_USER,
-    //         message: "Login Unsuccessful" });
-    //     alert("Incorrect Username or Password")    
-    // }
+    } else {
+        //this.props.dispatch({ type: UNAUTH_USER, message: "Login Unsuccessful" });
+        alert("Login Unsuccessful")    
+    }
     })
     .catch(err=> console.log(err))
   }
@@ -198,3 +198,11 @@ export default class LoginRegister extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+      
+      userState: state.userState
+  }
+}
+export default withRouter(connect(mapStateToProps)(LoginRegister));

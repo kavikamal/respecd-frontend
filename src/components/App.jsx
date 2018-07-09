@@ -1,74 +1,44 @@
 import React, { Component } from "react";
 import "../App.css";
-import banner from "../images/banner.png";
-import LoginRegister from "./LoginRegister";
-import {
-  Menu,
-  Dropdown,
-  Image, 
-  Icon
-} from "semantic-ui-react";
-import { Switch, Route, Link, withRouter } from "react-router-dom";
+
+import LoginRegister from "./User/LoginRegister";
+import SingleGlass from "./Glass/SingleGlass";
+import UpdateGlass from './Glass/UpdateGlass';
+import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import CreateGlass  from "./CreateGlass";
-import Frames from "./Frames";
-import CreateFrame from "./CreateFrame";
-import Glasses from "./Glasses";
+import CreateGlass  from "./Glass/CreateGlass";
+import Frames from "./Frame/Frames";
+import CreateFrame from "./Frame/CreateFrame";
+import Glasses from "./Glass/Glasses";
+import User from "./User/User";
+import NavBar from "./NavBar";
 
 class App extends Component {
-  state = { activeItem: 'home' }
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  handleLogout = (e, { name }) => {
-    this.setState({ activeItem: name })
-    alert("So Long!")
-    this.props.history.push("/")
-    this.setState({ activeItem: "home" })
-  }
+  
   render() {
-    const { activeItem } = this.state
-    
+
     return (
-      <React.Fragment>
-        <div>
-        <Image src={banner} fluid />
-        </div>
-
-        <div id="menuDiv">
-        <Menu size="huge" color="teal" widths={4} pointing secondary>
-            <Menu.Item id="home" as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
-              <Icon name="home" />Home
-            </Menu.Item>
-            
-            <Dropdown item  icon="newspaper" text='Browse '>
-              <Dropdown.Menu>
-              <Dropdown.Item as={Link} to={"/glasses"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
-              <Dropdown.Item as={Link} to={"/frames"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
-              </Dropdown.Menu>
-            </Dropdown>
-
-             <Dropdown item  icon="add" text='Donate '>
-              <Dropdown.Menu>
-              <Dropdown.Item as={Link} to={"/createGlass"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
-              <Dropdown.Item as={Link} to={"/createFrame"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
-              </Dropdown.Menu>
-            </Dropdown>
-            
-            <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
-
-            <Icon name="sign out"/>Logout
-            </Menu.Item>
-        </Menu>
-        </div>
+      <React.Fragment>   
+        <NavBar/>   
         <Switch>
           <Route exact path="/" component={LoginRegister} />
+          <Route path="/glasses/:glassesid" component={SingleGlass}/>
           <Route path="/glasses" component={Glasses} />
+          <Route path="/createGlass/:glassesid" component={UpdateGlass} />
           <Route path="/createGlass" component={CreateGlass} />
-          <Route path="/frames" component={Frames} />
+          <Route path="/updateFrame/:glassesid" component={UpdateGlass} />
           <Route path="/createFrame" component={CreateFrame} />
+          <Route path="/frames" component={Frames} />
+          <Route path="/user" component={User} />
         </Switch>
       </React.Fragment>
     );
   }
 }
-
-export default withRouter(connect()(App));
+const mapStateToProps = (state) => {
+  return {
+      token : state.userReducer.token,
+      user : state.userReducer
+  }
+}
+export default withRouter(connect(mapStateToProps)(App));
