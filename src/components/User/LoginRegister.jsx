@@ -57,6 +57,7 @@ class LoginRegister extends Component {
         loginSuccess: true
       })}
       })
+      .then(alert("Successful Registration!"))
       .catch(e => {
         console.log(e);
       });
@@ -79,7 +80,9 @@ class LoginRegister extends Component {
     .then(data => {
       console.log(data)
       if (data.auth) {
-        this.props.dispatch(loginUser({token: data.token,user:data.user}));
+        // this.props.dispatch(loginUser({token: data.token,user:data.user}));
+        this.props.dispatch(loginUser(data));
+        console.log(data);
         this.props.history.push("/glasses")        
 
     } else {

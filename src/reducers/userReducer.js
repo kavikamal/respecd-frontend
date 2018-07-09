@@ -6,13 +6,14 @@ export const userState ={
     lastname :'',
     email : '',
     token : '',
-    loginSuccess : false
+    loginSuccess : false,
 }
 
 export const userReducer = (state = userState, action) => {
     switch (action.type) {
         case LOGIN_USER:
-            console.log(action.payload);
+            
+            
             return { ...state, 
                 userid: action.payload.user.userid, 
                 firstname: action.payload.user.firstname, 
@@ -28,7 +29,7 @@ export const userReducer = (state = userState, action) => {
                 firstname: '', 
                 lastname: '',
                 email: '', 
-                token: '', 
+                token: null, 
                 loginSuccess: false 
             };
         case GET_USER:

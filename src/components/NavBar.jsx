@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import {  Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import banner from "../images/login.png";
+import { backendurl } from '../config';
+import { logoutUser } from '../actions/userAction';
 
 import { connect } from 'react-redux';
 import {
@@ -13,12 +15,36 @@ import {
 
 class NavBar extends Component {
     state = { activeItem: 'home', banner: banner  }
+
         handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
         handleLogout = (e, { name }) => {
+
+            let method = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            }
+
+            fetch(backendurl+"/logout", method)
+                .then(response => response.json())
+                .then((data) => {
+                    this.props.dispatch(logoutUser())
+                    console.log(data);
+                })
+
+
+
+
             this.setState({ activeItem: name })
             alert("So Long!")
             this.props.history.push("/")
             this.setState({ activeItem: "home" })
+            
+            
+            console.log(this.state);
     } 
     render() {
         const { activeItem , banner} = this.state
@@ -64,8 +90,12 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        token : state.userReducer.token,
-        user : state.userReducer
+        userid: state.userReducer.userid,
+        firstname: state.userReducer.firstname,
+        lastname: state.userReducer.lastname,
+        email: state.userReducer.email,
+        token: state.userReducer.token,
+        // user: state.userReducer
     }
   }
   export default withRouter(connect(mapStateToProps)(NavBar));
