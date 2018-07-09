@@ -8,9 +8,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class Glasses extends Component {
+
     state = {
         glasses: [],
       };
+
       componentDidMount() {
         const { token } = this.props;
         let method = {
@@ -44,6 +46,7 @@ const mapStateToProps = (state) => {
     return {
         token:state.userReducer.token,
         glasses:state.glassesReducer
+        
     }
 }
 export default withRouter(connect(mapStateToProps)(Glasses));
