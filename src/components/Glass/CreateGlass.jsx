@@ -1261,6 +1261,7 @@ const mapStateToProps = state => {
     image: state.glassesReducer.image,
     token: state.userReducer.token,
     userid: state.userReducer.userid,
+    contact: state.userReducer.email
     
   };
 };
