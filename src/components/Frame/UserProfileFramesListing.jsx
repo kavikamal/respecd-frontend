@@ -42,7 +42,7 @@ import {
                 <Segment key={index}>
             <div className="listContainer">
               <div className="image">
-                <Image src={item.image} />
+                <Image src={item.image} size="large"/>
               </div>
               <div className="title">
                 <Header as="h1">{item.title}</Header>

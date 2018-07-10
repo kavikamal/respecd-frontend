@@ -25,9 +25,9 @@ class SingleFrame extends Component {
         return(
             <React.Fragment>
               <Segment> 
-                  <div id="singleGlass">
-                <Header id="singleGlassHeader" as="h1">{this.props.title}</Header>     
-                  <div id="singleGlassQuality" className="quality">
+                  <div className="singleGlass">
+                <Header className="singleGlassHeader" as="h1">{this.props.title}</Header>     
+                  <div className="singleGlassQuality" className="quality">
                     Condition<Rating
                       icon="star"
                       rating={this.props.condition}
@@ -36,12 +36,12 @@ class SingleFrame extends Component {
                      />
                   </div>
 
-                  <Message id="singleGlassMessage">
+                  <Message className="singleGlassMessage">
                       <h3>Description</h3>
                       <p>{this.props.description}</p>
                   </Message>
                   
-                    <div id="singleGlassLocation">
+                    <div className="singleGlassLocation">
                       Location<h3>{this.props.city}</h3>
                     </div>
 

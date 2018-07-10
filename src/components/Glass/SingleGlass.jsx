@@ -82,9 +82,9 @@ class SingleGlass extends Component {
                       <p>{this.props.description}</p>
                   </Message>
                   
-                    <div className="singleGlassLocation">
+                    <Message className="singleGlassLocation">
                       Location<h3>{this.props.city}</h3>
-                    </div>
+                    </Message>
 
                     <Message>
                       <p>Pics can go here?</p>
