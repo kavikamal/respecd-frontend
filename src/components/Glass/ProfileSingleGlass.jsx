@@ -75,6 +75,10 @@ class ProfileSingleGlass extends Component {
                       <p>Pics can go here?</p>
                     </Message>
 
+                    <Message>
+                     Contact <h3>{this.props.contact}</h3>
+                    </Message>
+
                     <div>
                         <Button as={Link} to={`/createGlass/${this.props.glassesid}`}>Update</Button>
                         <Button>Delete</Button>
@@ -102,7 +106,8 @@ const mapStateToProps = state => {
         description: state.glassesReducer.description,
         city: state.glassesReducer.city,
         pic: state.glassesReducer.pic,
-        glassesid: state.glassesReducer.glassesid
+        glassesid: state.glassesReducer.glassesid,
+        contact: state.glassesReducer.contact
     };
 }
 
