@@ -75,6 +75,10 @@ class ProfileSingleGlass extends Component {
                       <p>Pics can go here?</p>
                     </Message>
 
+                    <Message>
+                     Contact <h3>email placeholder</h3>
+                    </Message>
+
                     <div>
                         <Button as={Link} to={`/createGlass/${this.props.glassesid}`}>Update</Button>
                         <Button>Delete</Button>

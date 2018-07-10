@@ -49,6 +49,10 @@ class SingleFrame extends Component {
                       <p>Pics can go here?</p>
                     </Message>
 
+                    <Message>
+                     Contact <h3>email placeholder</h3>
+                    </Message>
+
                     
 
                   </div>

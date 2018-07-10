@@ -14,7 +14,9 @@ export const glassesState = {
     city: "",
     pic: "",
     token: "",
-    userid: ""
+    userid: "",
+    contact: ""
+    
 }
 
 export const glassesReducer = (state = glassesState, action) => {
@@ -34,7 +36,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState.city = action.payload.city; 
             newState.pic = action.payload.pic;
             newState.userid = action.payload.userid;
-            // newState.token = action.payload.token;
+            
             return newState;
         case SINGLE_GLASS:
             let newState2 = {...state};
@@ -50,6 +52,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState2.description = action.payload.description; 
             newState2.city = action.payload.location; 
             newState2.pic = action.payload.pic;
+            newState2.contact = action.payload.email;
             // newState2.token = action.payload.token;
             return newState2;
         case UPDATE_GLASS:

@@ -29,7 +29,8 @@ class CreateGlass extends Component {
       description: "",
       city: "",
       pic: "",
-      userid: this.props.userid
+      userid: this.props.userid,
+      contact: this.props.contact
     }
   };
 
@@ -81,7 +82,8 @@ class CreateGlass extends Component {
           description: this.state.glassesObject.description,
           location: this.state.glassesObject.city,
           pic: this.state.glassesObject.pic,
-          userid: this.props.userid
+          userid: this.props.userid,
+         
         })
       }
     );
@@ -1262,7 +1264,8 @@ const mapStateToProps = state => {
     city: state.glassesReducer.city,
     pic: state.glassesReducer.pic,
     token: state.userReducer.token,
-    userid: state.userReducer.userid
+    userid: state.userReducer.userid,
+    
   };
 };
 
