@@ -28,8 +28,8 @@ class UpdateGlass extends Component {
       add: 0,
       condition: 0,
       description: "",
-      city: "",
-      pic: "",
+      location: "",
+      image: "",
       token: ""
     }
   };
@@ -69,7 +69,7 @@ class UpdateGlass extends Component {
           add: this.props.add,
           rating: this.props.condition,
           description: this.props.description,
-          location: this.props.city,
+          location: this.props.location,
           image: this.props.image,
           userid: 1,
           token: this.props.token
@@ -98,7 +98,7 @@ class UpdateGlass extends Component {
 //           add: this.props.add,
 //           rating: this.props.condition,
 //           description: this.props.description,
-//           location: this.props.city,
+//           location: this.props.location,
 //           image: this.props.image,
 //           userid: 1
 //         })
@@ -1228,7 +1228,7 @@ class UpdateGlass extends Component {
                 </Segment>
                 <Segment>
                   <div>
-                    Location <Input onChange={this.handleChangeUpdate} name="city" />
+                    Location <Input onChange={this.handleChangeUpdate} name="location" />
                   </div>
                 </Segment>
                 <div className="picture">
@@ -1238,7 +1238,7 @@ class UpdateGlass extends Component {
                       onChange={this.handleChangeUpdate}
                       method="put"
                       type="file"
-                      name="pic"
+                      name="image"
                       accept="image/*"
                     />
                   </Segment>
@@ -1271,8 +1271,8 @@ const mapStateToProps = state => {
     add: state.glassesReducer.add,
     condition: state.glassesReducer.condition,
     description: state.glassesReducer.description,
-    city: state.glassesReducer.city,
-    pic: state.glassesReducer.pic,
+    location: state.glassesReducer.location,
+    image: state.glassesReducer.image,
     token: state.glassesReducer.token
   };
 };

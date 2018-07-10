@@ -41,7 +41,7 @@ getSingleFrame = (frameId) => {
           <Segment key={index}>
             <div className="listContainer">
               <div className="image">
-                <Image src={item.image} size="large"/>
+                <Image src={item.image} size="large" />
               </div>
               <div className="title">
                 <Header as="h1">{item.title}</Header>
@@ -72,8 +72,8 @@ const mapStateToProps = state => {
     title: state.framesReducer.title,
     condition: state.framesReducer.condition,
     description: state.framesReducer.description,
-    city: state.framesReducer.city,
-    pic: state.framesReducer.pic,
+    location: state.framesReducer.location,
+    image: state.framesReducer.image,
     framesid: state.framesReducer.framesid,
     userid:state.framesReducer.userid,
     contact: state.framesReducer.email

@@ -11,8 +11,8 @@ export const glassesState = {
     add: 0,
     condition: 0,
     description: "",
-    city: "",
-    pic: "",
+    location: "",
+    image: "",
     token: "",
     userid: "",
     contact: "",
@@ -34,8 +34,8 @@ export const glassesReducer = (state = glassesState, action) => {
             newState.add = action.payload.add; 
             newState.condition = action.payload.condition; 
             newState.description = action.payload.description; 
-            newState.city = action.payload.city; 
-            newState.pic = action.payload.pic;
+            newState.location = action.payload.location; 
+            newState.image = action.payload.image;
             newState.userid = action.payload.userid;
             
             return newState;
@@ -51,26 +51,26 @@ export const glassesReducer = (state = glassesState, action) => {
             newState2.add = action.payload.add; 
             newState2.condition = action.payload.condition; 
             newState2.description = action.payload.description; 
-            newState2.city = action.payload.location; 
-            newState2.pic = action.payload.pic;
+            newState2.location = action.payload.location; 
+            newState2.image = action.payload.image;
             newState2.contact = action.payload.email; 
             newState2.glassesid = action.payload.glassesid;
             // newState2.token = action.payload.token;
             return newState2;
         case UPDATE_GLASS:
-            let newState3 = {...state};
-            newState3.title = action.payload.title;
-            newState3.leftsphere = action.payload.leftsphere;
-            newState3.rightsphere = action.payload.rightsphere;
-            newState3.leftcylinder = action.payload.leftcylinder;
-            newState3.rightcylinder = action.payload.rightcylinder;
-            newState3.leftaxis = action.payload.leftaxis;
-            newState3.rightaxis = action.payload.rightaxis;
-            newState3.add = action.payload.add; 
-            newState3.condition = action.payload.condition; 
-            newState3.description = action.payload.description; 
-            newState3.city = action.payload.location; 
-            newState3.pic = action.payload.pic;
+        let newState3 = {...state};
+        newState3.title = action.payload.title;
+        newState3.leftsphere = action.payload.leftsphere;
+        newState3.rightsphere = action.payload.rightsphere;
+        newState3.leftcylinder = action.payload.leftcylinder;
+        newState3.rightcylinder = action.payload.rightcylinder;
+        newState3.leftaxis = action.payload.leftaxis;
+        newState3.rightaxis = action.payload.rightaxis;
+        newState3.add = action.payload.add; 
+        newState3.condition = action.payload.condition; 
+        newState3.description = action.payload.description; 
+        newState3.location = action.payload.location; 
+        newState3.image = action.payload.image;
         // newState3.token = action.payload.token;
         return newState3;
         case PROFILE_SINGLE:
@@ -85,8 +85,8 @@ export const glassesReducer = (state = glassesState, action) => {
             newState4.add = action.payload.add; 
             newState4.condition = action.payload.condition; 
             newState4.description = action.payload.description; 
-            newState4.city = action.payload.location; 
-            newState4.pic = action.payload.pic;
+            newState4.location = action.payload.location; 
+            newState4.image = action.payload.image;
             newState4.glassesid = action.payload.glassesid;
             return newState4;
     default: 

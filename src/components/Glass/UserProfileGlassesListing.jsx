@@ -106,8 +106,8 @@ const mapStateToProps = state => {
       add: state.glassesReducer.add,
       condition: state.glassesReducer.condition,
       description: state.glassesReducer.description,
-      city: state.glassesReducer.city,
-      pic: state.glassesReducer.pic,
+      location: state.glassesReducer.location,
+      image: state.glassesReducer.image,
       glassesid: state.glassesReducer.glassesid
     };
   };

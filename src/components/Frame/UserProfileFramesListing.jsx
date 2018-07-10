@@ -74,7 +74,7 @@ import {
           condition: state.framesReducer.condition,
           description: state.framesReducer.description,
           location: state.framesReducer.location,
-          pic: state.framesReducer.pic,
+          image: state.framesReducer.image,
           userid: state.userReducer.userid,
           frameid: state.framesReducer.frameid
       }

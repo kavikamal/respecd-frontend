@@ -68,7 +68,7 @@ class ProfileSingleGlass extends Component {
                   </Message>
                   
                     <div className="singleGlassLocation">
-                      Location<h3>{this.props.city}</h3>
+                      Location<h3>{this.props.location}</h3>
                     </div>
 
                     <Message>
@@ -104,8 +104,8 @@ const mapStateToProps = state => {
         add: state.glassesReducer.add,
         condition: state.glassesReducer.condition,
         description: state.glassesReducer.description,
-        city: state.glassesReducer.city,
-        pic: state.glassesReducer.pic,
+        location: state.glassesReducer.location,
+        image: state.glassesReducer.image,
         glassesid: state.glassesReducer.glassesid,
         contact: state.glassesReducer.contact
     };
