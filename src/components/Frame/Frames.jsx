@@ -9,7 +9,7 @@ class Frames extends Component {
         frames: [],
       };
       componentDidMount() {
-        const { token } = this.props;
+        // const { token } = this.props;
         let method = {
             method: 'GET',
             headers: {

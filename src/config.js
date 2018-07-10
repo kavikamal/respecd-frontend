@@ -1,5 +1,5 @@
-// export const backendurl= 'https://re-specd-backend.herokuapp.com';
-export const backendurl='http://localhost:3000';
+export const backendurl= 'https://re-specd-backend.herokuapp.com';
+// export const backendurl='http://localhost:3000';
 
 //User
 export const LOGIN_USER = 'LOGIN_USER';
@@ -17,4 +17,6 @@ export const PROFILE_SINGLE = "PROFILE_SINGLE";
 //Frames
 export const CREATE_FRAME = "CREATE_FRAME";
 export const SINGLE_FRAME = "SINGLE_FRAME";
-export const UPDATE_FRAME = "UPDATE_FRAME"
+export const UPDATE_FRAME = "UPDATE_FRAME";
+export const PROFILE_FRAME_SINGLE = "PROFILE_FRAME_SINGLE";
+

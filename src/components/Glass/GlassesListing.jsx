@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 class GlassesListing extends Component {
 
   getSingleGlass = (glassId) => {
-    const { token } = this.props;
+    // const { token } = this.props;
         let method = {
             method: 'GET',
             headers: {

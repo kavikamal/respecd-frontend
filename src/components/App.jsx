@@ -15,6 +15,7 @@ import NavBar from "./NavBar";
 import SingleFrame from './Frame/SingleFrame';
 import ProfileGlasses from "./Glass/UserProfileGlasses";
 import ProfileSingleGlass from './Glass/ProfileSingleGlass';
+import ProfileSingleFrame from './Frame/ProfileSingleFrame';
 
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
           <Route path="/user" component={User} />
           <Route path="/allposts/:glassesid" component={ProfileSingleGlass} />
           <Route path="/allposts" component={ProfileGlasses} />
+          <Route path="/allframes/:framesid" component={ProfileSingleFrame} />
           
         </Switch>
       </React.Fragment>
