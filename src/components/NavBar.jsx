@@ -14,7 +14,7 @@ import {
   } from "semantic-ui-react";
 
 class NavBar extends Component {
-    state = { activeItem: 'home', banner: banner  }
+    state = { activeItem: 'login', banner: banner  }
 
         handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -41,7 +41,7 @@ class NavBar extends Component {
             this.setState({ activeItem: name })
             //alert("So Long!")
             this.props.history.push("/")
-            this.setState({ activeItem: "home" })
+            this.setState({ activeItem: "login" })
             
             
             console.log(this.state);
@@ -54,10 +54,12 @@ class NavBar extends Component {
         <Image src={banner} fluid />
         </div>
         <Menu size="huge" color="teal" widths={5} pointing secondary>
-            <Menu.Item id="home" as={Link} to={"/"} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
-              <Icon name="home" />Home
+        {!this.props.token && 
+        <React.Fragment>
+            <Menu.Item id="login" as={Link} to={"/"} name='login' active={activeItem === 'login'} onClick={this.handleItemClick}>
+              <Icon name="login" />Login
             </Menu.Item>
-            
+        </React.Fragment>}
             <Dropdown item  text='Browse '>
               <Dropdown.Menu>
               <Dropdown.Item as={Link} to={"/glasses"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />

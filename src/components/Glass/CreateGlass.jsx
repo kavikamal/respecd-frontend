@@ -46,9 +46,13 @@ class CreateGlass extends Component {
   };
 
   imageChange = evt => {
-    this.glassesObject.pic = evt.target.files[0];
-    console.log(this.glassesObject);
-  };
+      console.log(evt.target.files[0]);
+      const glassesObject = this.state.glassesObject;
+      glassesObject.pic = evt.target.files[0];
+      this.setState({
+        glassesObject: glassesObject
+      });
+    };
 
   qualityChange = (evt, { rating }) => {
     const glassesObject = this.state.glassesObject;
@@ -60,31 +64,20 @@ class CreateGlass extends Component {
 }
 
   createGlass = (evt) => {
+    const body = new FormData(evt.target);
+    
     evt.preventDefault();
+    console.log(this.state.glassesObject.pic)
     fetch(backendurl+"/glasses",
       {
         method: "POST",
         mode: "cors",
         headers: {
-          "Content-Type": "application/json",
           "Authorization": "Bearer " + this.props.token 
         },
-        body: JSON.stringify({
-          title: this.state.glassesObject.title,
-          leftsphere: this.state.glassesObject.leftsphere,
-          rightsphere: this.state.glassesObject.rightsphere,
-          leftcylinder: this.state.glassesObject.leftcylinder,
-          rightcylinder: this.state.glassesObject.rightcylinder,
-          rightaxis: this.state.glassesObject.rightaxis,
-          leftaxis: this.state.glassesObject.leftaxis,
-          add: this.state.glassesObject.add,
-          condition: this.state.glassesObject.condition,
-          description: this.state.glassesObject.description,
-          location: this.state.glassesObject.city,
-          pic: this.state.glassesObject.pic,
-          userid: this.props.userid,
-         
-        })
+
+        body
+
       }
     );
     this.props.dispatch(glassesCreate(this.state.glassesObject));
@@ -95,6 +88,7 @@ class CreateGlass extends Component {
     return (
       <React.Fragment>
         <Form
+          onSubmit={this.createGlass}
           action= {backendurl+"/glasses"} /*"https://re-specd-backend.herokuapp.com/glasses"*/
           method="POST"
           encType="multipart/form-data"
@@ -1207,6 +1201,8 @@ class CreateGlass extends Component {
                       maxRating={4}
                     />
                   </div>
+                <input type="hidden" name="condition" value={this.state.glassesObject.condition}></input>
+                <input type="hidden" name="userid" value={this.props.userid}></input>
                 </Segment>
               </div>
 
@@ -1218,14 +1214,14 @@ class CreateGlass extends Component {
                 </Segment>
                 <Segment>
                   <div>
-                    Location <Input onChange={this.handleChange} name="city" />
+                    Location <Input onChange={this.handleChange} name="location" />
                   </div>
                 </Segment>
                 <div className="picture">
                   <Segment>
                     Upload Images{" "}
                     <Form.Input
-                      onChange={this.handleChange}
+                      onChange={this.imageChange}
                       method="post"
                       type="file"
                       name="pic"
@@ -1234,7 +1230,7 @@ class CreateGlass extends Component {
                   </Segment>
                 </div>
                 <Form.Button
-                  onClick={this.createGlass}
+                  
                   color="teal"
                   type="submit"
                 >
