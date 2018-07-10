@@ -1,21 +1,24 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import '../../App.css';
 import { backendurl } from '../../config';
 import {
-  Header,
-  Image,
-  Button,
-  Segment,
-  Rating,
-} from "semantic-ui-react";
-import { Link, withRouter } from 'react-router-dom';
-import { glassSingle } from '../../actions/glassesAction';
+    Header,
+    Image,
+    Button,
+    Segment,
+    Rating,
+  } from "semantic-ui-react";
+  import { Link, withRouter } from 'react-router-dom';
+  import { profileGlassSingle } from '../../actions/glassesAction';
 import { connect } from 'react-redux';
 
-class GlassesListing extends Component {
+class UserProfileGlassesListing extends Component {
 
-  getSingleGlass = (glassId) => {
-    const { token } = this.props;
+    state = {
+        profileGlasses: this.props
+    }
+
+    getSingleProfileGlass = (glassId) => {
         let method = {
             method: 'GET',
             headers: {
@@ -27,20 +30,16 @@ class GlassesListing extends Component {
         fetch(backendurl+"/glasses/"+glassId, method)
         .then(response => response.json())
         .then(data => {
-          this.props.dispatch(glassSingle(data.data[0]))
+          this.props.dispatch(profileGlassSingle(data.data[0]))
           console.log("glasses fetch", data.data[0]);
         })
-       
+    }
 
-  }
-  
 
-  render() {
-    
-    
-    return (
-      <React.Fragment>
-        {this.props.glasses.map((item, index) => (
+    render() {
+        return (
+            <React.Fragment>
+            {this.props.glasses.map((item, index) => (
           <Segment key={index}>
             <div className="listContainer">
               <div className="image">
@@ -57,7 +56,7 @@ class GlassesListing extends Component {
                   />
                 </div>
                 <div className="detailsBtn">
-                  <Button onClick={(evt)=>this.getSingleGlass(item.glassesid)} as={Link} to={`/glasses/${item.glassesid}`}>See More Details</Button>
+                  <Button onClick={(evt)=>this.getSingleProfileGlass(item.glassesid)} as={Link} to={`/allposts/${item.glassesid}`}>See More Details</Button>
                 </div>
                 <div className="prescription">
                   <table border="1" cellSpacing="0" cellPadding="2" className="rx">
@@ -90,29 +89,29 @@ class GlassesListing extends Component {
             </div>
           </Segment>
         ))}
-      </React.Fragment>
-    );
-  }
+            </React.Fragment>
+        );
+    }
 }
 
-
-
 const mapStateToProps = state => {
-  return {
-    title: state.glassesReducer.title,
-    rightsphere: state.glassesReducer.rightsphere,
-    leftsphere: state.glassesReducer.leftsphere,
-    rightcylinder: state.glassesReducer.rightcylinder,
-    leftcylinder: state.glassesReducer.leftcylinder,
-    rightaxis: state.glassesReducer.rightaxis,
-    leftaxis: state.glassesReducer.leftaxis,
-    add: state.glassesReducer.add,
-    condition: state.glassesReducer.condition,
-    description: state.glassesReducer.description,
-    city: state.glassesReducer.city,
-    pic: state.glassesReducer.pic,
-    glassesid: state.glassesReducer.glassesid
+    return {
+      title: state.glassesReducer.title,
+      rightsphere: state.glassesReducer.rightsphere,
+      leftsphere: state.glassesReducer.leftsphere,
+      rightcylinder: state.glassesReducer.rightcylinder,
+      leftcylinder: state.glassesReducer.leftcylinder,
+      rightaxis: state.glassesReducer.rightaxis,
+      leftaxis: state.glassesReducer.leftaxis,
+      add: state.glassesReducer.add,
+      condition: state.glassesReducer.condition,
+      description: state.glassesReducer.description,
+      city: state.glassesReducer.city,
+      pic: state.glassesReducer.pic,
+      glassesid: state.glassesReducer.glassesid
+    };
   };
-};
+  
+  export default withRouter(connect(mapStateToProps)(UserProfileGlassesListing));
 
-export default withRouter(connect(mapStateToProps)(GlassesListing));
+
