@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import '../App.jsx';
-import { Grid, Header, Image } from 'semantic-ui-react';
+import { Grid, Header, Image, Segment, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 
 class User extends Component {
@@ -14,12 +14,19 @@ class User extends Component {
         return (
             <React.Fragment>
                  
-                <Grid columns={3} textAlign='center'>
-                <Image src="" size='medium' shape='circular'/>
+                {/* <Grid columns={3} textAlign='center'> */}
                 
-                <Header as='h3'>{user.lastname},{user.firstname}</Header>
-                <Header as='h4'>{user.email}</Header>
-                </Grid>
+                {/* <Header as='h3'>{user.lastname},{user.firstname}</Header> */}
+                <Segment>
+                Name<Header as='h2'>{user.firstname} {user.lastname}</Header>
+                </Segment>
+                <Segment>
+                Email<Header as='h3'>{user.email}</Header>
+                </Segment>
+                <Segment>
+                    <Button as={Link} to={"/allposts"}>Go To Your Listings</Button>
+                </Segment>
+                {/* </Grid> */}
       
             </React.Fragment>
         )

@@ -79,10 +79,10 @@ class ProfileSingleGlass extends Component {
                      Contact <h3>{this.props.contact}</h3>
                     </Message>
 
-                    <div>
+                    {/* <div>
                         <Button as={Link} to={`/createGlass/${this.props.glassesid}`}>Update</Button>
                         <Button>Delete</Button>
-                    </div>
+                    </div> */}
 
                   </div>
                 </Segment>

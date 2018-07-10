@@ -56,10 +56,10 @@ class ProfileSingleFrame extends Component {
                      Contact <h3>{this.props.contact}</h3>
                     </Message>
 
-                  <div>
+                  {/* <div>
                       <Button as={Link} to={`/updateframe/${this.props.frameid}`}>Update</Button>
                       <Button>Delete</Button>
-                  </div>
+                  </div> */}
 
                 </div>
               </Segment>
