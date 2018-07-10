@@ -53,11 +53,11 @@ class ProfileSingleFrame extends Component {
                   </Message>
 
                   <Message>
-                     Contact <h3>email placeholder</h3>
+                     Contact <h3>{this.props.contact}</h3>
                     </Message>
 
                   <div>
-                      <Button as={Link} to={`/updateframe/${this.props.framesid}`}>Update</Button>
+                      <Button as={Link} to={`/updateframe/${this.props.frameid}`}>Update</Button>
                       <Button>Delete</Button>
                   </div>
 
@@ -76,7 +76,8 @@ const mapStateToProps = state => {
         description: state.framesReducer.description,
         city: state.framesReducer.city,
         pic: state.framesReducer.pic,
-        framesid: state.framesReducer.glassesid
+        frameid: state.framesReducer.frameid,
+        contact: state.framesReducer.contact
 
     }
 }

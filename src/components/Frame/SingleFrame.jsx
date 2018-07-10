@@ -50,7 +50,7 @@ class SingleFrame extends Component {
                     </Message>
 
                     <Message>
-                     Contact <h3>email placeholder</h3>
+                     Contact <h3>{this.props.contact}</h3>
                     </Message>
 
                     
@@ -71,7 +71,8 @@ const mapStateToProps = state => {
       description: state.framesReducer.description,
       city: state.framesReducer.city,
       pic: state.framesReducer.pic,
-      framesid: state.framesReducer.glassesid
+      framesid: state.framesReducer.glassesid,
+      contact: state.framesReducer.contact
     };
   };
 

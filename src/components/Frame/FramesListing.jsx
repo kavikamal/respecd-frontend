@@ -75,7 +75,8 @@ const mapStateToProps = state => {
     city: state.framesReducer.city,
     pic: state.framesReducer.pic,
     framesid: state.framesReducer.framesid,
-    userid:state.framesReducer.userid
+    userid:state.framesReducer.userid,
+    contact: state.framesReducer.email
   };
 };
 

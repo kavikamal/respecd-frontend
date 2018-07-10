@@ -7,7 +7,11 @@ export const framesState = {
     description: "",
     location: "",
     pic: "",
-    userid:""
+    userid:"",
+    frameid: "",
+    contact: ""
+
+
 }
 
 export const framesReducer = (state = framesState, action) => {
@@ -30,6 +34,8 @@ export const framesReducer = (state = framesState, action) => {
             newState.location = action.payload.location; 
             newState.pic = action.payload.pic;
             newState.userid = action.payload.userid;
+            newState.frameid = action.payload.frameid;
+            newState.contact = action.payload.email
             return newState;  
         case UPDATE_FRAME:
             newState = {...state};
@@ -48,6 +54,8 @@ export const framesReducer = (state = framesState, action) => {
             newState.location = action.payload.location;
             newState.pic = action.payload.pic;
             newState.userid = action.payload.userid;
+            newState.frameid = action.payload.frameid;
+            newState.contact = action.payload.email;
             return newState;
         default: 
             return state;

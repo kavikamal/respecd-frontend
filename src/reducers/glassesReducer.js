@@ -15,7 +15,8 @@ export const glassesState = {
     pic: "",
     token: "",
     userid: "",
-    contact: ""
+    contact: "",
+    glassesid: ""
     
 }
 
@@ -52,7 +53,8 @@ export const glassesReducer = (state = glassesState, action) => {
             newState2.description = action.payload.description; 
             newState2.city = action.payload.location; 
             newState2.pic = action.payload.pic;
-            newState2.contact = action.payload.email;
+            newState2.contact = action.payload.email; 
+            newState2.glassesid = action.payload.glassesid;
             // newState2.token = action.payload.token;
             return newState2;
         case UPDATE_GLASS:
@@ -85,6 +87,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState4.description = action.payload.description; 
             newState4.city = action.payload.location; 
             newState4.pic = action.payload.pic;
+            newState4.glassesid = action.payload.glassesid;
             return newState4;
     default: 
             return state;
