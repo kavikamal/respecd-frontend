@@ -2,18 +2,14 @@
   text-align: center;
 }
 
-#singleGlass {
+.singleGlass {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#singleGlassQuality {
-  margin-top: 50px;
-}
-
-#singleGlassMessage {
+.singleGlassMessage {
   margin-top: 50px;
 }
 
@@ -66,6 +62,7 @@
 .quality {
   /* border: 1px solid orange; */
   display: flex;
+  margin-top: 50px;
   
 }
 

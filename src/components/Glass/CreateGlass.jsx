@@ -29,10 +29,12 @@ class CreateGlass extends Component {
       description: "",
       city: "",
       pic: "",
+      userid: this.props.userid
     }
   };
 
   handleChange = event => {
+    
     const field = event.target.name;
     const glassesObject = this.state.glassesObject;
     glassesObject[field] = event.target.value;

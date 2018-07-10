@@ -1,4 +1,4 @@
-import { CREATE_GLASS, SINGLE_GLASS, UPDATE_GLASS } from '../config'
+import { CREATE_GLASS, SINGLE_GLASS, UPDATE_GLASS, PROFILE_SINGLE } from '../config'
 
 export const glassesState = {
     title: "",
@@ -13,7 +13,8 @@ export const glassesState = {
     description: "",
     city: "",
     pic: "",
-    token: ""
+    token: "",
+    userid: ""
 }
 
 export const glassesReducer = (state = glassesState, action) => {
@@ -32,6 +33,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState.description = action.payload.description; 
             newState.city = action.payload.city; 
             newState.pic = action.payload.pic;
+            newState.userid = action.payload.userid;
             // newState.token = action.payload.token;
             return newState;
         case SINGLE_GLASS:
@@ -66,7 +68,21 @@ export const glassesReducer = (state = glassesState, action) => {
         newState3.pic = action.payload.pic;
         // newState3.token = action.payload.token;
         return newState3;
-   
+        case PROFILE_SINGLE:
+            let newState4 = {...state};
+            newState4.title = action.payload.title;
+            newState4.leftsphere = action.payload.leftsphere;
+            newState4.rightsphere = action.payload.rightsphere;
+            newState4.leftcylinder = action.payload.leftcylinder;
+            newState4.rightcylinder = action.payload.rightcylinder;
+            newState4.leftaxis = action.payload.leftaxis;
+            newState4.rightaxis = action.payload.rightaxis;
+            newState4.add = action.payload.add; 
+            newState4.condition = action.payload.condition; 
+            newState4.description = action.payload.description; 
+            newState4.city = action.payload.location; 
+            newState4.pic = action.payload.pic;
+            return newState4;
     default: 
             return state;
     }
