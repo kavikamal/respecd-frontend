@@ -37,7 +37,7 @@ export const glassesReducer = (state = glassesState, action) => {
             newState.location = action.payload.location; 
             newState.image = action.payload.image;
             newState.userid = action.payload.userid;
-            
+            newState.contact = action.payload.contact;
             return newState;
         case SINGLE_GLASS:
             let newState2 = {...state};

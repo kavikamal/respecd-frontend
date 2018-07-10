@@ -3,7 +3,7 @@ import '../../App.css';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header,
-    
+    Image,
     Segment,
     Button,
     Rating,
@@ -72,7 +72,9 @@ class ProfileSingleGlass extends Component {
                     </div>
 
                     <Message>
-                      <p>Pics can go here?</p>
+                     <div className="image">
+                     <Image src={this.props.image} size="large"/>
+                     </div> 
                     </Message>
 
                     <Message>
