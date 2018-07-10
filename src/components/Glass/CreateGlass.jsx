@@ -1198,6 +1198,7 @@ class CreateGlass extends Component {
                       maxRating={4}
                     />
                   </div>
+                <input type="hidden" name="condition" value={this.state.glassesObject.condition}></input>
                 </Segment>
               </div>
 
