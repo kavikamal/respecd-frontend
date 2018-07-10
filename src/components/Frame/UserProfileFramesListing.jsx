@@ -42,7 +42,7 @@ import {
                 <Segment key={index}>
             <div className="listContainer">
               <div className="image">
-                <Image src={item.image} />
+                <Image src={item.image} size="large"/>
               </div>
               <div className="title">
                 <Header as="h1">{item.title}</Header>
@@ -74,7 +74,7 @@ import {
           condition: state.framesReducer.condition,
           description: state.framesReducer.description,
           location: state.framesReducer.location,
-          pic: state.framesReducer.pic,
+          image: state.framesReducer.image,
           userid: state.userReducer.userid,
           frameid: state.framesReducer.frameid
       }

@@ -153,7 +153,7 @@ const mapStateToProps = state => {
     title: state.framesReducer.title,
     condition: state.framesReducer.condition,
     description: state.framesReducer.description,
-    city: state.framesReducer.city,
+    location: state.framesReducer.location,
     frameimage: state.framesReducer.frameimage,
     userid:state.userReducer.userid
   };

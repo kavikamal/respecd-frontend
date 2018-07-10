@@ -134,7 +134,7 @@
   top: 10px;
 }
 
-#rxRight1, #rxRight2, #rxLeft1, #rxLeft2, #city, #state {
+#rxRight1, #rxRight2, #rxLeft1, #rxLeft2, #location, #state {
   border: 1px solid darkgray;
   width: 100px;
   height: 25px;

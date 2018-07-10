@@ -6,7 +6,7 @@ export const framesState = {
     condition: 0,
     description: "",
     location: "",
-    pic: "",
+    image: "",
     userid:"",
     frameid: "",
     contact: ""
@@ -23,7 +23,7 @@ export const framesReducer = (state = framesState, action) => {
             newState.condition = action.payload.condition; 
             newState.description = action.payload.description; 
             newState.location = action.payload.location; 
-            newState.pic = action.payload.pic;
+            newState.image = action.payload.image;
             newState.userid = action.payload.userid;
             return newState;
         case SINGLE_FRAME:
@@ -32,7 +32,7 @@ export const framesReducer = (state = framesState, action) => {
             newState.condition = action.payload.condition; 
             newState.description = action.payload.description; 
             newState.location = action.payload.location; 
-            newState.pic = action.payload.pic;
+            newState.image = action.payload.image;
             newState.userid = action.payload.userid;
             newState.frameid = action.payload.frameid;
             newState.contact = action.payload.email
@@ -43,7 +43,7 @@ export const framesReducer = (state = framesState, action) => {
             newState.condition = action.payload.condition; 
             newState.description = action.payload.description; 
             newState.location = action.payload.location; 
-            newState.pic = action.payload.pic;
+            newState.image = action.payload.image;
             newState.userid = action.payload.userid;
             return newState;
         case PROFILE_FRAME_SINGLE:
@@ -52,7 +52,7 @@ export const framesReducer = (state = framesState, action) => {
             newState.condition = action.payload.condition;
             newState.description = action.payload.description;
             newState.location = action.payload.location;
-            newState.pic = action.payload.pic;
+            newState.image = action.payload.image;
             newState.userid = action.payload.userid;
             newState.frameid = action.payload.frameid;
             newState.contact = action.payload.email;
