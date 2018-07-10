@@ -75,7 +75,8 @@ import {
           description: state.framesReducer.description,
           location: state.framesReducer.location,
           pic: state.framesReducer.pic,
-          userid: state.userReducer.userid
+          userid: state.userReducer.userid,
+          frameid: state.framesReducer.frameid
       }
   }
 

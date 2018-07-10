@@ -29,7 +29,8 @@ class CreateGlass extends Component {
       description: "",
       city: "",
       pic: "",
-      userid: this.props.userid
+      userid: this.props.userid,
+      contact: this.props.contact
     }
   };
 
@@ -74,7 +75,9 @@ class CreateGlass extends Component {
         headers: {
           "Authorization": "Bearer " + this.props.token 
         },
+
         body
+
       }
     );
     this.props.dispatch(glassesCreate(this.state.glassesObject));
@@ -1257,7 +1260,8 @@ const mapStateToProps = state => {
     city: state.glassesReducer.city,
     pic: state.glassesReducer.pic,
     token: state.userReducer.token,
-    userid: state.userReducer.userid
+    userid: state.userReducer.userid,
+    
   };
 };
 
