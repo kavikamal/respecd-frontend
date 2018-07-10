@@ -43,7 +43,7 @@ class UserProfileGlassesListing extends Component {
           <Segment key={index}>
             <div className="listContainer">
               <div className="image">
-                <Image src={item.image} />
+                <Image src={item.image} size="large"/>
               </div>
               <div className="title">
                 <Header as="h1">{item.title}</Header>
@@ -106,8 +106,8 @@ const mapStateToProps = state => {
       add: state.glassesReducer.add,
       condition: state.glassesReducer.condition,
       description: state.glassesReducer.description,
-      city: state.glassesReducer.city,
-      pic: state.glassesReducer.pic,
+      location: state.glassesReducer.location,
+      image: state.glassesReducer.image,
       glassesid: state.glassesReducer.glassesid
     };
   };

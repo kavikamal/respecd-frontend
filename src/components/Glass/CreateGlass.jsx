@@ -27,8 +27,8 @@ class CreateGlass extends Component {
       add: 0,
       condition: 0,
       description: "",
-      city: "",
-      pic: "",
+      location: "",
+      image: "",
       userid: this.props.userid,
       contact: this.props.contact
     }
@@ -48,7 +48,7 @@ class CreateGlass extends Component {
   imageChange = evt => {
       console.log(evt.target.files[0]);
       const glassesObject = this.state.glassesObject;
-      glassesObject.pic = evt.target.files[0];
+      glassesObject.image = evt.target.files[0];
       this.setState({
         glassesObject: glassesObject
       });
@@ -67,7 +67,7 @@ class CreateGlass extends Component {
     const body = new FormData(evt.target);
     
     evt.preventDefault();
-    console.log(this.state.glassesObject.pic)
+    console.log(this.state.glassesObject.image)
     fetch(backendurl+"/glasses",
       {
         method: "POST",
@@ -1257,8 +1257,8 @@ const mapStateToProps = state => {
     add: state.glassesReducer.add,
     condition: state.glassesReducer.condition,
     description: state.glassesReducer.description,
-    city: state.glassesReducer.city,
-    pic: state.glassesReducer.pic,
+    location: state.glassesReducer.location,
+    image: state.glassesReducer.image,
     token: state.userReducer.token,
     userid: state.userReducer.userid,
     

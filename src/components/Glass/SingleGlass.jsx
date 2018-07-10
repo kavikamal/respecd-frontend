@@ -3,7 +3,7 @@ import '../../App.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header,
-    
+    Image,
     Segment,
     
     Rating,
@@ -23,8 +23,8 @@ class SingleGlass extends Component {
           add: "",
           condition: "",
           description: "",
-          city: "",
-          pic: ""
+          location: "",
+          image: ""
         }
       };
 
@@ -83,11 +83,13 @@ class SingleGlass extends Component {
                   </Message>
                   
                     <div className="singleGlassLocation">
-                      Location<h3>{this.props.city}</h3>
+                      Location<h3>{this.props.location}</h3>
                     </div>
 
                     <Message>
-                      <p>Pics can go here?</p>
+                    <div className="image">
+                    <Image src={this.props.image} size="large"/>
+                    </div> 
                     </Message>
 
                     <Message>
@@ -121,8 +123,8 @@ const mapStateToProps = state => {
       add: state.glassesReducer.add,
       condition: state.glassesReducer.condition,
       description: state.glassesReducer.description,
-      city: state.glassesReducer.city,
-      pic: state.glassesReducer.pic,
+      location: state.glassesReducer.location,
+      image: state.glassesReducer.image,
       glassesid: state.glassesReducer.glassesid,
       contact: state.glassesReducer.contact
     };

@@ -17,8 +17,8 @@ class ProfileSingleFrame extends Component {
             title: "",
             condition: "",
             description: "",
-            city: "",
-            pic: ""
+            location: "",
+            image: ""
         }
     };
 
@@ -45,7 +45,7 @@ class ProfileSingleFrame extends Component {
                 </Message>
                 
                   <div className="singleGlassLocation">
-                    Location<h3>{this.props.city}</h3>
+                    Location<h3>{this.props.location}</h3>
                   </div>
 
                   <Message>
@@ -74,8 +74,8 @@ const mapStateToProps = state => {
         title: state.framesReducer.title,
         condition: state.framesReducer.condition,
         description: state.framesReducer.description,
-        city: state.framesReducer.city,
-        pic: state.framesReducer.pic,
+        location: state.framesReducer.location,
+        image: state.framesReducer.image,
         frameid: state.framesReducer.frameid,
         contact: state.framesReducer.contact
 
