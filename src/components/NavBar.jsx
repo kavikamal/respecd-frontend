@@ -39,7 +39,7 @@ class NavBar extends Component {
 
 
             this.setState({ activeItem: name })
-            alert("So Long!")
+            //alert("So Long!")
             this.props.history.push("/")
             this.setState({ activeItem: "home" })
             
@@ -64,7 +64,8 @@ class NavBar extends Component {
               <Dropdown.Item as={Link} to={"/frames"} name="frames" active={activeItem === 'frames'} onClick={this.handleItemClick} text='Frames' />
               </Dropdown.Menu>  
             </Dropdown>
-
+            {this.props.token && 
+            <React.Fragment>
              <Dropdown item  text='Donate '>
               <Dropdown.Menu>
               <Dropdown.Item as={Link} to={"/createGlass"} name="glasses"  active={activeItem === 'glasses'} onClick={this.handleItemClick} text='Glasses' />
@@ -82,6 +83,7 @@ class NavBar extends Component {
             <Menu.Item  name='logout' active={activeItem === 'logout'} onClick={this.handleLogout}>
             <Icon name="sign out"/>Logout
             </Menu.Item>
+            </React.Fragment>}
         </Menu>
         </React.Fragment>
     )
