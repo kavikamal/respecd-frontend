@@ -1199,6 +1199,7 @@ class CreateGlass extends Component {
                     />
                   </div>
                 <input type="hidden" name="condition" value={this.state.glassesObject.condition}></input>
+                <input type="hidden" name="userid" value={this.props.userid}></input>
                 </Segment>
               </div>
 
@@ -1210,7 +1211,7 @@ class CreateGlass extends Component {
                 </Segment>
                 <Segment>
                   <div>
-                    Location <Input onChange={this.handleChange} name="city" />
+                    Location <Input onChange={this.handleChange} name="location" />
                   </div>
                 </Segment>
                 <div className="picture">

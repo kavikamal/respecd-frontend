@@ -50,36 +50,23 @@ class CreateFrame extends Component {
         framesObject: framesObject
       });  
   };
-
-
+  
   createFrame = (evt) => {
-    const { token } = this.props;
+    const body = new FormData(evt.target);
     evt.preventDefault();
-        let method = {
-            method: 'POST',
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json' 
-            },
-            mode: 'cors',
-            body: JSON.stringify({
-              title: this.state.framesObject.title,
-              condition: this.state.framesObject.condition,
-              description: this.state.framesObject.description,
-              location: this.state.framesObject.location,
-              frameimage: this.state.framesObject.frameimage,
-              userid: this.props.userid
-            })
-        }
-        fetch(backendurl+"/frames", method)
-        .then(response => response.json())
-        .then(() => {
-          // console.log(data);
-          // console.log(this.state);
-          this.props.dispatch(createFrame(this.state.framesObject));
-          // console.log("Create frame fetch", data);
-        })
-  }
+    fetch(backendurl+"/frames",
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Authorization": "Bearer " + this.props.token 
+        },
+        body
+      }
+    );
+    this.props.dispatch(createFrame(this.state.framesObject));
+    this.props.history.push("/frames");
+  };
 
   
 
@@ -87,6 +74,7 @@ class CreateFrame extends Component {
     return (
       <React.Fragment>
         <Form
+          onSubmit={this.createFrame}
           action={backendurl+"/frames"}
           method="POST"
           encType="multipart/form-data"
@@ -106,6 +94,8 @@ class CreateFrame extends Component {
                 </Segment>  
 
                 <Segment>
+                <input type="hidden" name="condition" value={this.state.framesObject.condition}></input>
+                <input type="hidden" name="userid" value={this.props.userid}></input>
                   <div>
                     Condition{" "}
                     <Rating
@@ -143,7 +133,6 @@ class CreateFrame extends Component {
                   </Segment>
                 </div>
                 <Form.Button
-                  onClick={this.createFrame}
                   color="teal"
                   type="submit"
                 >
