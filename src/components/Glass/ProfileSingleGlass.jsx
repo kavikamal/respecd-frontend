@@ -3,13 +3,13 @@ import '../../App.css';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header,
-    Image,
+    
     Segment,
     Button,
     Rating,
     Message          
 } from 'semantic-ui-react';
-import { backendurl } from '../..//config';
+// import { backendurl } from '../..//config';
 
 class ProfileSingleGlass extends Component {
 
