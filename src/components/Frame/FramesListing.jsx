@@ -16,7 +16,7 @@ import { withRouter } from 'react-router-dom';
 class FramesListing extends Component {
 
 getSingleFrame = (frameId) => {
-  const { token } = this.props;
+  // const { token } = this.props;
       let method = {
           method: 'GET',
           headers: {

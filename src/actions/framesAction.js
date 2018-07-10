@@ -1,4 +1,4 @@
-import { CREATE_FRAME,SINGLE_FRAME,UPDATE_FRAME } from '../config';
+import { CREATE_FRAME,SINGLE_FRAME,UPDATE_FRAME, PROFILE_FRAME_SINGLE } from '../config';
 
 export const createFrame = (data) => {
     return {
@@ -16,6 +16,13 @@ export const getSingleFrame = (data) => {
 export const updateFrame = (data) => {
     return {
         type: UPDATE_FRAME,
+        payload: data
+    }
+}
+
+export const profileFrameSingle = (data) => {
+    return {
+        type: PROFILE_FRAME_SINGLE,
         payload: data
     }
 }

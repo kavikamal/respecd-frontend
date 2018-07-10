@@ -3,7 +3,7 @@ import '../../App.css';
 import { withRouter, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header,
-    Image,
+   
     Segment,
     Button,
     Rating,
@@ -49,10 +49,7 @@ class SingleFrame extends Component {
                       <p>Pics can go here?</p>
                     </Message>
 
-                    <div>
-                        <Button as={Link} to={`/updateframe/${this.props.framesid}`}>Update</Button>
-                        <Button>Delete</Button>
-                    </div>
+                    
 
                   </div>
                 </Segment>

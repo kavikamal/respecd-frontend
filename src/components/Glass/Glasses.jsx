@@ -14,7 +14,7 @@ class Glasses extends Component {
       };
 
       componentDidMount() {
-        const { token } = this.props;
+        // const { token } = this.props;
         let method = {
             method: 'GET',
             headers: {

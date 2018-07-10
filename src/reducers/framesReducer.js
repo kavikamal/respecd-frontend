@@ -1,5 +1,5 @@
 
-import { CREATE_FRAME,SINGLE_FRAME,UPDATE_FRAME } from '../config'
+import { CREATE_FRAME, SINGLE_FRAME, UPDATE_FRAME, PROFILE_FRAME_SINGLE } from '../config'
 
 export const framesState = {
     title: "",
@@ -39,7 +39,16 @@ export const framesReducer = (state = framesState, action) => {
             newState.location = action.payload.location; 
             newState.pic = action.payload.pic;
             newState.userid = action.payload.userid;
-            return newState;      
+            return newState;
+        case PROFILE_FRAME_SINGLE:
+            newState = {...state};
+            newState.title = action.payload.title;
+            newState.condition = action.payload.condition;
+            newState.description = action.payload.description;
+            newState.location = action.payload.location;
+            newState.pic = action.payload.pic;
+            newState.userid = action.payload.userid;
+            return newState;
         default: 
             return state;
     } 

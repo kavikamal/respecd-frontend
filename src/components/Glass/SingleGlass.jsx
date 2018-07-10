@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import { withRouter, Link  } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header,
-    Image,
+    
     Segment,
-    Button,
+    
     Rating,
     Message          
 } from 'semantic-ui-react';
