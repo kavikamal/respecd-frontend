@@ -64,7 +64,7 @@ class CreateFrame extends Component {
             mode: 'cors',
             body: JSON.stringify({
               title: this.state.framesObject.title,
-              rating: this.state.framesObject.condition,
+              condition: this.state.framesObject.condition,
               description: this.state.framesObject.description,
               location: this.state.framesObject.location,
               frameimage: this.state.framesObject.frameimage,
@@ -73,9 +73,11 @@ class CreateFrame extends Component {
         }
         fetch(backendurl+"/frames", method)
         .then(response => response.json())
-        .then(data => {
-          //this.props.dispatch(createFrame(data.data))
-          console.log("Create frame fetch", data.data);
+        .then(() => {
+          // console.log(data);
+          // console.log(this.state);
+          this.props.dispatch(createFrame(this.state.framesObject));
+          // console.log("Create frame fetch", data);
         })
   }
 
