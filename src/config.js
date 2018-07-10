@@ -12,6 +12,7 @@ export const DELETE_USER ='DELETE_USER';
 export const CREATE_GLASS = "CREATE_GLASS";
 export const SINGLE_GLASS = "SINGLE_GLASS";
 export const UPDATE_GLASS = "UPDATE_GLASS"
+export const PROFILE_SINGLE = "PROFILE_SINGLE";
  
 //Frames
 export const CREATE_FRAME = "CREATE_FRAME";

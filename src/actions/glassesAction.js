@@ -1,4 +1,4 @@
-import { CREATE_GLASS,SINGLE_GLASS,UPDATE_GLASS} from "../config";
+import { CREATE_GLASS,SINGLE_GLASS,UPDATE_GLASS,PROFILE_SINGLE} from "../config";
 
 export const glassesCreate = (data) => {
     return {
@@ -12,6 +12,13 @@ export const glassSingle = (data) => {
         type: SINGLE_GLASS,
         payload: data
     }    
+}
+
+export const profileGlassSingle = (data) => {
+    return {
+        type: PROFILE_SINGLE,
+        payload: data
+    }
 }
 
 export const glassesUpdate = (data) => {

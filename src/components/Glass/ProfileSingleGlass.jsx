@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import { withRouter, Link  } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header,
     Image,
@@ -9,28 +9,15 @@ import { Header,
     Rating,
     Message          
 } from 'semantic-ui-react';
-class SingleGlass extends Component {
+import { backendurl } from '../..//config';
 
-    state = {
-        singleGlassObject: {
-          title: "",
-          leftsphere: "",
-          rightsphere: "",
-          leftcylinder: "",
-          rightcylinder: "",
-          leftaxis: "",
-          rightaxis: "",
-          add: "",
-          condition: "",
-          description: "",
-          city: "",
-          pic: ""
-        }
-      };
+class ProfileSingleGlass extends Component {
+
     
-    render() {
-        return(
-            <React.Fragment>
+
+      render() {
+          return(
+              <React.Fragment>
               <Segment> 
                   <div className="singleGlass">
                 <Header className="singleGlassHeader" as="h1">{this.props.title}</Header>
@@ -88,37 +75,35 @@ class SingleGlass extends Component {
                       <p>Pics can go here?</p>
                     </Message>
 
+                    <div>
+                        <Button as={Link} to={`/createGlass/${this.props.glassesid}`}>Update</Button>
+                        <Button>Delete</Button>
+                    </div>
+
                   </div>
                 </Segment>
-                
-                
-                
-                
-                
-                
-            </React.Fragment>
-        )
-    }
+
+              </React.Fragment>
+          )
+      }
 }
-
-
 
 const mapStateToProps = state => {
     return {
-      title: state.glassesReducer.title,
-      rightsphere: state.glassesReducer.rightsphere,
-      leftsphere: state.glassesReducer.leftsphere,
-      rightcylinder: state.glassesReducer.rightcylinder,
-      leftcylinder: state.glassesReducer.leftcylinder,
-      rightaxis: state.glassesReducer.rightaxis,
-      leftaxis: state.glassesReducer.leftaxis,
-      add: state.glassesReducer.add,
-      condition: state.glassesReducer.condition,
-      description: state.glassesReducer.description,
-      city: state.glassesReducer.city,
-      pic: state.glassesReducer.pic,
-      glassesid: state.glassesReducer.glassesid
+        title: state.glassesReducer.title,
+        rightsphere: state.glassesReducer.rightsphere,
+        leftsphere: state.glassesReducer.leftsphere,
+        rightcylinder: state.glassesReducer.rightcylinder,
+        leftcylinder: state.glassesReducer.leftcylinder,
+        rightaxis: state.glassesReducer.rightaxis,
+        leftaxis: state.glassesReducer.leftaxis,
+        add: state.glassesReducer.add,
+        condition: state.glassesReducer.condition,
+        description: state.glassesReducer.description,
+        city: state.glassesReducer.city,
+        pic: state.glassesReducer.pic,
+        glassesid: state.glassesReducer.glassesid
     };
-  };
+}
 
-  export default withRouter(connect(mapStateToProps)(SingleGlass));
+export default withRouter(connect(mapStateToProps)(ProfileSingleGlass));

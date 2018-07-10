@@ -13,6 +13,8 @@ import Glasses from "./Glass/Glasses";
 import User from "./User/User";
 import NavBar from "./NavBar";
 import SingleFrame from './Frame/SingleFrame';
+import ProfileGlasses from "./Glass/UserProfileGlasses";
+import ProfileSingleGlass from './Glass/ProfileSingleGlass';
 
 
 class App extends Component {
@@ -33,6 +35,9 @@ class App extends Component {
           <Route path="/frames/:frameid" component={SingleFrame} />
           <Route path="/frames" component={Frames} />
           <Route path="/user" component={User} />
+          <Route path="/allposts/:glassesid" component={ProfileSingleGlass} />
+          <Route path="/allposts" component={ProfileGlasses} />
+          
         </Switch>
       </React.Fragment>
     );
